@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel · Rodrigo Madera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap">
+<style>
+  :root{
+    color-scheme: dark;
+    --cabina:#09090B; --humo:#141418; --borde:#24242C;
+    --hueso:#F2EFE9; --gris:#8A8A93; --gris-claro:#C6C3BE;
+    --rojo:#E5342B; --ambar:#F5A623;
+    --display:'Unbounded','Helvetica Neue',Arial,sans-serif;
+    --texto:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--cabina);color:var(--hueso);font-family:var(--texto);
+       font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:56px 72px}
+  a{color:var(--hueso)}
+  :focus-visible{outline:2px solid var(--ambar);outline-offset:3px;border-radius:3px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gris);
+           font-weight:700;margin:0}
+
+  header{border-bottom:1px solid var(--borde);padding-bottom:26px;margin-bottom:40px}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,5vw,38px);
+     letter-spacing:-.04em;line-height:1.08;margin:12px 0 0}
+  .volver{display:inline-block;margin-top:14px;font-size:14px;color:var(--gris);text-decoration:none}
+  .volver:hover{color:var(--hueso)}
+
+  .tarjetas{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;
+            margin-bottom:34px}
+  .tarjeta{background:var(--humo);border:1px solid var(--borde);border-radius:14px;
+           padding:24px 24px 22px;border-top:3px solid var(--ac,var(--rojo))}
+  .tarjeta .rotulo{font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+                   color:var(--ac,var(--rojo));font-weight:700;margin:0 0 12px}
+  .cifra{font-family:var(--display);font-weight:700;font-size:clamp(34px,6.5vw,48px);
+         letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums;
+         display:block;min-height:1em}
+  .tarjeta .nota{font-size:13px;color:var(--gris);margin:10px 0 0;line-height:1.5}
+
+  .aviso{background:var(--humo);border:1px solid var(--borde);border-radius:14px;
+         padding:22px 24px;margin-bottom:24px}
+  .aviso p{margin:0;font-size:14.5px;line-height:1.65;color:var(--gris-claro)}
+  .aviso p+p{margin-top:12px}
+  .aviso code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;
+              background:var(--cabina);border:1px solid var(--borde);border-radius:5px;
+              padding:2px 6px}
+
+  .btn{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:700;
+       text-decoration:none;border:1px solid var(--borde);border-radius:999px;
+       padding:12px 20px;background:var(--humo);transition:border-color .15s}
+  .btn:hover{border-color:var(--hueso)}
+
+  footer{border-top:1px solid var(--borde);margin-top:40px;padding-top:24px}
+  footer p{margin:0;font-size:13px;color:var(--gris);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Panel interno</p>
+    <h1>Visitas</h1>
+    <a class="volver" href="/">Volver al sitio</a>
+  </header>
+
+  <div class="tarjetas">
+    <div class="tarjeta" style="--ac:var(--rojo)">
+      <p class="rotulo">Desde el inicio</p>
+      <span class="cifra" id="total">—</span>
+      <p class="nota">Visitas totales al sitio desde que se instaló el contador.</p>
+    </div>
+    <div class="tarjeta" style="--ac:var(--ambar)">
+      <p class="rotulo">Últimos 30 días</p>
+      <span class="cifra" id="mes">—</span>
+      <p class="nota">Sirve para ver si compartir el enlace en redes movió la aguja.</p>
+    </div>
+    <div class="tarjeta" style="--ac:#2FE3C8">
+      <p class="rotulo">Últimos 7 días</p>
+      <span class="cifra" id="semana">—</span>
+      <p class="nota">La semana corriente, de jueves a sábado incluidos.</p>
+    </div>
+  </div>
+
+  <div class="aviso" id="estado" hidden>
+    <p id="estado-txt"></p>
+  </div>
+
+  <p><a class="btn" id="panel" href="https://www.goatcounter.com/" target="_blank" rel="noopener noreferrer">Abrir el panel completo</a></p>
+
+  <div class="aviso" style="margin-top:32px">
+    <p><strong>Sobre la privacidad de esta página.</strong> El sitio es estático, así que
+    esta dirección no lleva contraseña: quien la conozca puede abrirla. Lleva la marca
+    <code>noindex</code>, de modo que no aparece en buscadores, y no hay ningún enlace
+    hacia ella desde el sitio.</p>
+    <p>Lo que sí es privado es el panel completo, que vive en tu cuenta de GoatCounter y
+    pide iniciar sesión. Ahí está el detalle: de dónde llega la gente, qué páginas ven,
+    con qué navegador y desde qué país.</p>
+  </div>
+
+  <footer>
+    <p>Rodrigo Madera · rodrigomadera.com</p>
+  </footer>
+
+</div>
+
+<script>
+/* =========================================================================
+   Pon aquí tu código de GoatCounter: es la primera parte de la dirección
+   que te dan al crear la cuenta. Si tu panel es rodrigomadera.goatcounter.com,
+   el código es "rodrigomadera".
+   IMPORTANTE: el mismo código va también en el CONFIG de index.html.
+   ========================================================================= */
+var GOATCOUNTER = "";
+/* ======================================================================= */
+
+(function () {
+  "use strict";
+
+  var estado = document.getElementById("estado");
+  var estadoTxt = document.getElementById("estado-txt");
+
+  function avisar(txt) {
+    estadoTxt.textContent = txt;
+    estado.hidden = false;
+  }
+
+  if (!GOATCOUNTER) {
+    avisar("Todavía no has puesto tu código de GoatCounter. Abre este archivo, " +
+           "busca la línea que empieza con GOATCOUNTER y escribe ahí el código de tu cuenta.");
+    return;
+  }
+
+  var base = "https://" + GOATCOUNTER + ".goatcounter.com";
+  document.getElementById("panel").href = base;
+
+  var fallos = 0;
+
+  function pedir(destino, parametros, alFallar) {
+    var url = base + "/counter/TOTAL.json" + (parametros || "");
+    fetch(url, { mode: "cors" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("respuesta " + r.status);
+        return r.json();
+      })
+      .then(function (d) {
+        var n = d.count_unique != null ? d.count_unique : d.count;
+        document.getElementById(destino).textContent = (n == null ? "—" : String(n));
+      })
+      .catch(function () {
+        document.getElementById(destino).textContent = "—";
+        if (alFallar) alFallar();
+      });
+  }
+
+  pedir("total", "", function () {
+    fallos++;
+    avisar("No pude leer las cifras. Suele ser porque falta activar la casilla " +
+           "“Allow adding visitor counts to your website” en la configuración " +
+           "de GoatCounter, o porque el código de la cuenta no coincide. " +
+           "El panel completo sí funciona con el botón de abajo.");
+  });
+  pedir("mes", "?start=30d");
+  pedir("semana", "?start=7d");
+})();
+</script>
+</body>
+</html>

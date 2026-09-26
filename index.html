@@ -332,6 +332,12 @@ var CONFIG = {
   stream: "https://usa3.lhdserver.es:8327/stream",
   estacion: "Impulso FM 107.3",
 
+  // Código de GoatCounter, el contador de visitas. Es la primera parte de la
+  // dirección de tu panel: si es rodrigomadera.goatcounter.com, aquí va
+  // "rodrigomadera". Déjalo en "" para no contar nada.
+  // El mismo código va también en admin/index.html.
+  goatcounter: "",
+
   // Datos de contratación. Deja en "" lo que no quieras publicar.
   contacto: {
     email: "madera.rodrigo@gmail.com",
@@ -669,6 +675,16 @@ var CONFIG = {
   }
   window.addEventListener("hashchange", revisarPanel);
   revisarPanel();
+
+  // Contador de visitas. Solo se carga si hay código; no usa cookies.
+  if (CONFIG.goatcounter && /^[a-z0-9-]+$/i.test(CONFIG.goatcounter)) {
+    var gc = document.createElement("script");
+    gc.async = true;
+    gc.src = "https://gc.zgo.at/count.js";
+    gc.setAttribute("data-goatcounter",
+      "https://" + CONFIG.goatcounter + ".goatcounter.com/count");
+    document.body.appendChild(gc);
+  }
 
   pintarFormularios();
   pintarProgramas();
