@@ -76,6 +76,36 @@
           text-transform:uppercase;font-weight:700;padding:4px 0;flex:0 0 auto}
   .copiar:hover{color:var(--hueso)}
 
+  /* ---------- formulario ---------- */
+  .forma{background:var(--humo);border:1px solid var(--borde);border-radius:12px;
+         padding:18px;display:flex;flex-direction:column;gap:10px}
+  .forma .campo{display:flex;flex-direction:column;gap:6px}
+  .forma label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+               color:var(--gris);font-weight:700}
+  .forma input,.forma textarea{width:100%;font-family:var(--texto);font-size:15px;
+       color:var(--hueso);background:var(--cabina);border:1px solid var(--borde);
+       border-radius:10px;padding:12px 13px;line-height:1.45;
+       transition:border-color .16s;-webkit-appearance:none}
+  .forma textarea{resize:vertical;min-height:104px}
+  .forma input:focus,.forma textarea:focus{outline:none;border-color:var(--rojo)}
+  .forma input::placeholder,.forma textarea::placeholder{color:#5C5C66}
+  .forma .par{display:flex;gap:10px}
+  .forma .par>.campo{flex:1 1 0;min-width:0}
+  @media (max-width:420px){.forma .par{flex-direction:column}}
+  .forma .miel{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .enviar{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:-.02em;
+          color:var(--cabina);background:var(--hueso);border:none;border-radius:10px;
+          padding:14px 18px;cursor:pointer;margin-top:2px;
+          transition:opacity .16s,transform .16s}
+  .enviar:hover{transform:translateY(-1px)}
+  .enviar:disabled{opacity:.5;cursor:default;transform:none}
+  @media (prefers-reduced-motion:reduce){.enviar:hover{transform:none}}
+  .recado{font-size:13.5px;line-height:1.5;margin:0;padding:11px 13px;
+          border-radius:10px;border:1px solid var(--borde);background:var(--cabina)}
+  .recado.bien{border-color:var(--verde);color:var(--hueso)}
+  .recado.mal{border-color:var(--rojo);color:var(--hueso)}
+  .letrita{font-size:12px;color:var(--gris);line-height:1.5;margin:2px 0 0}
+
   footer{border-top:1px solid var(--borde);margin-top:34px;padding-top:24px;text-align:center}
   footer a{font-size:13.5px;color:var(--gris);text-decoration:none}
   footer a:hover{color:var(--hueso)}
@@ -99,11 +129,31 @@
         <span class="txt"><span class="nombre">WhatsApp</span><span class="cuenta">+52 998 322 2382</span></span>
         <span class="ir" aria-hidden="true">&rarr;</span>
       </a>
-      <div class="btn" style="--ac:var(--rojo)">
-        <span class="marca"></span>
-        <span class="txt"><span class="nombre">Correo</span><span class="cuenta" id="correo">madera.rodrigo@gmail.com</span></span>
-        <button type="button" class="copiar" data-copiar="madera.rodrigo@gmail.com">Copiar</button>
-      </div>
+
+      <form class="forma" id="forma" hidden novalidate>
+        <div class="par">
+          <div class="campo">
+            <label for="f-nombre">Nombre</label>
+            <input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" required>
+          </div>
+          <div class="campo">
+            <label for="f-correo">Correo</label>
+            <input id="f-correo" name="correo" type="email" autocomplete="email" placeholder="tu@correo.com" required>
+          </div>
+        </div>
+        <div class="campo">
+          <label for="f-telefono">Teléfono <span style="text-transform:none;letter-spacing:0;font-weight:400">(opcional)</span></label>
+          <input id="f-telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+52 998 000 0000">
+        </div>
+        <div class="campo">
+          <label for="f-mensaje">Mensaje</label>
+          <textarea id="f-mensaje" name="mensaje" placeholder="Cuéntame de qué se trata." required></textarea>
+        </div>
+        <input class="miel" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="enviar" type="submit">Enviar mensaje</button>
+        <p class="recado" id="recado" hidden role="status" aria-live="polite"></p>
+        <p class="letrita">Tus datos llegan directo a mi correo. No se guardan en la página ni se comparten con nadie.</p>
+      </form>
     </div>
   </div>
 
@@ -164,23 +214,89 @@
 (function () {
   "use strict";
 
-  Array.prototype.forEach.call(document.querySelectorAll(".copiar"), function (b) {
-    b.addEventListener("click", function () {
-      var t = b.dataset.copiar;
-      var listo = function () { b.textContent = "Copiado"; };
-      var aMano = function () {
-        try {
-          var span = b.parentNode.querySelector(".cuenta");
-          var r = document.createRange(); r.selectNodeContents(span);
-          var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-          b.textContent = "Selecciona";
-        } catch (e) {}
-      };
-      try { navigator.clipboard.writeText(t).then(listo, aMano); }
-      catch (e) { aMano(); }
-      setTimeout(function () { b.textContent = "Copiar"; }, 2200);
+  /* =======================================================================
+     FORMULARIO DE CONTACTO
+
+     Pega abajo tu clave de Web3Forms. Se saca en web3forms.com: escribes
+     tu correo, te mandan la clave y listo, no hay que crear cuenta.
+
+     La clave no es tu correo ni lo revela: Web3Forms guarda la dirección
+     de su lado y te reenvía ahí los mensajes. Quien vea el código de esta
+     página solo ve la clave.
+
+     Mientras esté vacía, el formulario no se muestra y queda WhatsApp.
+     ======================================================================= */
+  var CLAVE_FORMULARIO = "";
+  /* ===================================================================== */
+
+  var forma = document.getElementById("forma");
+  var recado = document.getElementById("recado");
+
+  function avisar(texto, clase) {
+    recado.textContent = texto;
+    recado.className = "recado " + clase;
+    recado.hidden = false;
+  }
+
+  if (forma && CLAVE_FORMULARIO) {
+    forma.hidden = false;
+
+    forma.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+
+      if (forma.botcheck.checked) return;
+
+      var nombre = forma.nombre.value.trim();
+      var correo = forma.correo.value.trim();
+      var telefono = forma.telefono.value.trim();
+      var mensaje = forma.mensaje.value.trim();
+
+      if (!nombre || !correo || !mensaje) {
+        avisar("Faltan datos: el nombre, el correo y el mensaje son necesarios.", "mal");
+        return;
+      }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(correo)) {
+        avisar("Revisa el correo, parece que tiene un error.", "mal");
+        forma.correo.focus();
+        return;
+      }
+
+      var boton = forma.querySelector(".enviar");
+      boton.disabled = true;
+      boton.textContent = "Enviando…";
+      recado.hidden = true;
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          access_key: CLAVE_FORMULARIO,
+          subject: "Mensaje desde rodrigomadera.com",
+          from_name: "rodrigomadera.com",
+          name: nombre,
+          email: correo,
+          phone: telefono || "no lo dejó",
+          message: mensaje
+        })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d && d.success) {
+            forma.reset();
+            avisar("Listo, tu mensaje ya salió. Te contesto en cuanto lo vea.", "bien");
+          } else {
+            avisar("No se pudo enviar. Escríbeme por WhatsApp mientras lo reviso.", "mal");
+          }
+        })
+        .catch(function () {
+          avisar("No se pudo enviar, puede ser la conexión. Prueba otra vez o escríbeme por WhatsApp.", "mal");
+        })
+        .then(function () {
+          boton.disabled = false;
+          boton.textContent = "Enviar mensaje";
+        });
     });
-  });
+  }
 
   /* Contador de visitas. Mismo código de GoatCounter que en las demás páginas. */
   var GOATCOUNTER = "";

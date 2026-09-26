@@ -37,6 +37,25 @@ También se puede desde el navegador, sin tocar código: entra a
 `rodrigomadera.com/radio/#config`, llena los campos y pulsa
 "Generar configuración".
 
+## Formulario de contacto
+
+El correo ya no aparece en ninguna página. En su lugar hay un formulario en
+`/socials/` y otro en `/radio/` (sección Contrataciones). Como el sitio es
+estático y no tiene servidor, el envío pasa por **Web3Forms**, que recibe los
+datos y los reenvía al correo.
+
+La clave se saca en `web3forms.com`: se escribe el correo, la mandan y ya. No
+hay que crear cuenta. Esa clave es lo único que queda en el código; la
+dirección de correo se guarda del lado de Web3Forms, así que no se publica.
+
+La misma clave va en dos lugares:
+
+- `socials/index.html` → `var CLAVE_FORMULARIO`
+- `radio/index.html` → `formulario:` dentro de `CONFIG`
+
+Mientras estén vacías, el formulario no se muestra. En `/socials/` queda el
+botón de WhatsApp, que sí es público a propósito.
+
 ## Contador de visitas
 
 Usa GoatCounter, que es gratuito y no pone cookies. El código de la cuenta va
