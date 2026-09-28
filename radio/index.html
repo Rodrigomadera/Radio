@@ -25,6 +25,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,900&display=swap">
 <style>
   :root{
     color-scheme: dark;
@@ -110,7 +111,13 @@
         display:flex;flex-direction:column;gap:16px}
   .prog .dia{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--ac)}
   .prog h3{font-size:21px;line-height:1.16;letter-spacing:-.035em}
-  .p-ca h3{font-weight:700}
+  /* Hypeando: letra ancha y pesada con el marcatextos ámbar del programa. */
+  .p-hy h3{order:-1;font-family:'Archivo','Arial Black','Helvetica Neue',sans-serif;font-stretch:112%;
+           font-weight:900;font-size:clamp(34px,4.2vw,44px);line-height:.95;letter-spacing:-.01em;margin-bottom:-4px}
+  .p-hy h3 span{background:linear-gradient(transparent 66%,var(--ac) 66% 97%,transparent 97%);
+                padding-inline:.05em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .prog .dia .detalle{display:block;margin-top:6px;text-transform:none;letter-spacing:0;font-weight:400;color:var(--gris-claro)}
+  .prog .dia .detalle b{color:var(--hueso);font-weight:700}
   .p-vd h3{font-weight:400;letter-spacing:-.02em}
   .p-sr h3{font-weight:900;letter-spacing:.05em;
            text-transform:uppercase;font-size:18px}
@@ -420,9 +427,12 @@ var CONFIG = {
   programas: [
     {
       id: "hypeando",
-      clase: "p-ca",
+      clase: "p-hy",
       nombre: "Hypeando",
       dia: "Jueves · 8:00 pm",
+      // Opcionales: aparecen junto al día, como en la ficha de Hypeando.
+      conduce: "Rodrigo Madera",
+      formato: "1 hora · magazine con música",
       acento: "#F5A623",
       lema: "El impulso disruptivo.",
       secciones: "Impulso Tech · Lo que se viralizó · Estreno de la semana · Cartelera regional · Chismecito internacional · El dato inútil"
@@ -523,8 +533,10 @@ var CONFIG = {
       art.className = "prog " + p.clase;
       art.style.setProperty("--ac", p.acento);
       art.innerHTML =
-        '<p class="dia">' + esc(p.dia) + "</p>" +
-        "<h3>" + esc(p.nombre) + "</h3>" +
+        '<p class="dia">' + esc(p.dia) +
+          (p.conduce ? '<span class="detalle">Conduce <b>' + esc(p.conduce) + "</b>" +
+                       (p.formato ? " · " + esc(p.formato) : "") + "</span>" : "") + "</p>" +
+        "<h3><span>" + esc(p.nombre) + "</span></h3>" +
         '<p class="lin">' + esc(p.lema) + "</p>" +
         '<p class="sec">' + esc(p.secciones) + "</p>";
       cont.appendChild(art);
