@@ -81,7 +81,7 @@ function list(){const L=document.getElementById('list');
  const eps=EPS.map((e,i)=>({...e,i})).filter(e=>filtro=='Todos'||e.show==filtro);
  L.innerHTML=eps.length?eps.map(e=>`<div class="ep" style="--c:${C[e.color]}">
   <div class="cover" style="background:${C[e.color]}">${e.show}</div>
-  <div><div class="show" style="color:${C[e.color]}">${e.show} · ${e.dia}</div><h2>${e.ep}</h2><div class="fecha">📻 Transmitido el ${fecha(e.fecha)}</div>
+  <div><div class="show" style="color:${C[e.color]}">${e.show} · ${e.dia}</div><h2>${e.show} ${e.ep}</h2><div class="fecha">📻 Transmitido el ${fecha(e.fecha)}</div>
   <div class="meta">${fmt(e.dur)} · ${e.ch.length} capítulos · 320 kbps</div>
   <div class="row"><button class="play" style="background:${C[e.color]}" data-i="${e.i}">▶</button>
   <button class="btn" data-o="${e.i}">Capítulos</button><a class="btn" href="${e.src}" download style="text-decoration:none">Descargar</a></div>
@@ -106,7 +106,7 @@ a.ontimeupdate=()=>{if(cur==null)return;const e=EPS[cur],t=a.currentTime;
  let k=0;e.ch.forEach(([s],j)=>{if(t>=s)k=j});document.getElementById('nc').textContent=e.ch[k][1];
  document.querySelectorAll('.ch').forEach(r=>r.classList.toggle('now',+r.dataset.i===cur&&+r.dataset.s===e.ch[k][0]));
  try{localStorage.setItem('pos'+cur,t)}catch(_){}
- if('mediaSession'in navigator&&!a._ms){a._ms=1;navigator.mediaSession.metadata=new MediaMetadata({title:e.ep,artist:'Rodrigo Madera',album:e.show})}};
+ if('mediaSession'in navigator&&!a._ms){a._ms=1;navigator.mediaSession.metadata=new MediaMetadata({title:e.show+' '+e.ep,artist:'Rodrigo Madera',album:e.show})}};
 a.onloadedmetadata=()=>{const pg=document.getElementById('pg');pg.querySelectorAll('u').forEach(u=>u.remove());
  EPS[cur].ch.forEach(([s])=>{const u=document.createElement('u');u.style.left=s/a.duration*100+'%';pg.appendChild(u)})};
 fetch('episodios.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{EPS=d.filter(e=>!e.disponible||new Date(e.disponible)<=Date.now());tabs();list()});

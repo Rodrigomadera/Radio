@@ -575,7 +575,7 @@ var CONFIG = {
         if (falta > 0) {
           var hora = new Date(e.disponible).toLocaleTimeString("es-MX", { hour: "numeric", minute: "2-digit", timeZone: "America/Cancun" });
           m.innerHTML = '<p class="ya">Próximamente</p><button aria-label="Disponible más tarde" disabled style="opacity:.35;cursor:default">▶</button><div><div class="t">' +
-            esc(e.ep) + '</div><div class="f">Disponible hoy a partir de las ' + esc(hora) + "</div></div>";
+            esc(e.show + " " + e.ep) + '</div><div class="f">Disponible hoy a partir de las ' + esc(hora) + "</div></div>";
           art.appendChild(m);
           if (falta < 864e5) setTimeout(function () { m.remove(); ponerUno(art, e); }, falta + 1000);
           return;
@@ -590,7 +590,7 @@ var CONFIG = {
     function ponerUno(art, e) {
         var m = document.createElement("div");
         m.className = "mini";
-        m.innerHTML = '<p class="ya">Escucha ahora</p><button aria-label="Reproducir">▶</button><div><div class="t">' + esc(e.ep) + '</div><div class="f">Último programa · ' + esc(dia(e.fecha)) + "</div></div>" +
+        m.innerHTML = '<p class="ya">Escucha ahora</p><button aria-label="Reproducir">▶</button><div><div class="t">' + esc(e.show + " " + e.ep) + '</div><div class="f">Último programa · ' + esc(dia(e.fecha)) + "</div></div>" +
           '<div class="bar"><i></i></div><div class="pie"><span class="tm">0:00 / ' + reloj(e.dur) + '</span><a href="/podcast/">Todos los episodios →</a></div>';
         var b = m.querySelector("button"), barra = m.querySelector(".bar"), fill = m.querySelector(".bar i"), tm = m.querySelector(".tm");
         m._pintar = function () { b.textContent = actual === m && !audio.paused ? "❚❚" : "▶";
