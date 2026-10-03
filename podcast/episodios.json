@@ -4,7 +4,7 @@
   "ep": "Temp.1 Ep.1",
   "dia": "Viernes 8:00 pm",
   "color": "rosa",
-  "src": "https://shows.rodrigomadera.com/cronicas-migajeras/01.mp3",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/cronicas-migajeras/01.mp3",
   "ch": [
    [
     0,
@@ -87,7 +87,7 @@
   "ep": "Temp.1 Ep.1",
   "dia": "Jueves",
   "color": "ambar",
-  "src": "https://shows.rodrigomadera.com/hypeando/01.mp3",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/hypeando/01.mp3",
   "ch": [
    [
     0,
@@ -210,7 +210,7 @@
   "ep": "Temp.1 Ep.1",
   "dia": "Sábado 8:00 pm",
   "color": "cian",
-  "src": "https://shows.rodrigomadera.com/sabado-de-rush/01.mp3",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/sabado-de-rush/01.mp3",
   "fecha": "2026-10-03",
   "dur": 3667,
   "disponible": "2026-10-03T21:00:00-05:00",
