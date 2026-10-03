@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+  <title>Sábado de Rush · Rodrigo Madera</title>
+  <link>https://rodrigomadera.com/podcast/</link>
+  <atom:link href="https://rodrigomadera.com/podcast/sabado-de-rush/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Electrónica y toda la cultura que la rodea. Sábado 8:00 pm por Impulso FM 107.3.</description>
+  <language>es-mx</language>
+  <itunes:author>Rodrigo Madera</itunes:author>
+  <itunes:image href="https://rodrigomadera.com/podcast/img/sabado-de-rush.png"/>
+  <image><url>https://rodrigomadera.com/podcast/img/sabado-de-rush.png</url><title>Sábado de Rush · Rodrigo Madera</title><link>https://rodrigomadera.com/podcast/</link></image>
+  <itunes:category text="Music"/>
+  <itunes:explicit>false</itunes:explicit>
+  <itunes:block>Yes</itunes:block>
+  <podcast:locked>yes</podcast:locked>
+
+ </channel>
+</rss>

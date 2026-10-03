@@ -52,12 +52,24 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,7vw,72px);lin
 .right{display:flex;gap:8px}
 @media(max-width:640px){.ep{grid-template-columns:72px 1fr;gap:14px;padding:16px}.ep h2{font-size:17px}
 .bar .in{grid-template-columns:1fr}.right{display:none}}
-.mock{position:fixed;top:10px;right:10px;background:var(--ambar);color:#000;font:700 11px ui-monospace,monospace;padding:4px 8px;border-radius:6px}
+.ep.foco{border-color:var(--c);box-shadow:0 0 0 1px var(--c)}
+.subs{margin-top:26px;background:var(--humo);border:1px solid var(--borde);border-radius:18px;padding:18px 20px}
+.subs h3{font:700 15px var(--display);margin-bottom:4px}.subs p{color:var(--gris);font-size:13px;margin-bottom:12px}
+.subs .apps{display:flex;gap:8px;flex-wrap:wrap}.subs a,.subs button{text-decoration:none}
+.spoti{display:block;margin-top:12px;font-size:12.5px;color:var(--gris)}.spoti a{color:var(--gris-claro)}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:var(--hueso);color:var(--cabina);font:600 13px var(--texto);padding:10px 16px;border-radius:99px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
 </style></head><body>
 <div class="wrap">
   <div class="kicker"><a href="/radio/" style="color:inherit;text-decoration:none">← Radio</a> · Impulso FM 107.3</div>
   <h1>Podcast</h1>
   <p class="lead">Todos los programas completos, cuando quieras. Toca un capítulo para saltar directo a esa canción o a ese tema.</p>
+  <div class="subs" id="subs">
+    <h3>Llévatelo a tu app</h3>
+    <p>Suscríbete y te llegan los programas nuevos solos. Descárgalos y escúchalos sin internet, con la app cerrada.</p>
+    <div class="apps" id="apps"></div>
+    <span class="spoti">¿Prefieres Spotify? <a href="https://open.spotify.com/show/6IsvrUUjdikxReJRv9Vgd2" target="_blank" rel="noopener">Síguenos también ahí</a></span>
+  </div>
   <div class="tabs" id="tabs"></div>
   <div id="list"></div>
 </div>
@@ -68,6 +80,7 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,7vw,72px);lin
   <div class="right"><button class="btn" id="sp">1x</button><button class="btn" id="sh">Compartir</button></div>
 </div></div>
 <audio id="a" preload="none"></audio>
+<div class="toast" id="toast"></div>
 <script>
 let EPS=[];
 const C={rosa:'#FF3B6B',cian:'#2FE3C8',ambar:'#F5A623'};
@@ -79,35 +92,57 @@ function tabs(){const t=['Todos',...new Set([...EPS.map(e=>e.show),'Sábado de R
  document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{filtro=b.textContent;tabs();list()})}
 function list(){const L=document.getElementById('list');
  const eps=EPS.map((e,i)=>({...e,i})).filter(e=>filtro=='Todos'||e.show==filtro);
- L.innerHTML=eps.length?eps.map(e=>`<div class="ep" style="--c:${C[e.color]}">
+ L.innerHTML=eps.length?eps.map(e=>`<div class="ep" id="ep-${e.slug}-${e.num}" style="--c:${C[e.color]}">
   <div class="cover" style="background:${C[e.color]}">${e.show}</div>
   <div><div class="show" style="color:${C[e.color]}">${e.show} · ${e.dia}</div><h2>${e.show} ${e.ep}</h2><div class="fecha">📻 Transmitido el ${fecha(e.fecha)}</div>
   <div class="meta">${fmt(e.dur)} · ${e.ch.length} capítulos · 320 kbps</div>
   <div class="row"><button class="play" style="background:${C[e.color]}" data-i="${e.i}">▶</button>
-  <button class="btn" data-o="${e.i}">Capítulos</button><a class="btn" href="${e.src}" download style="text-decoration:none">Descargar</a></div>
+  <button class="btn" data-o="${e.i}">Capítulos</button><button class="btn" data-sh="${e.i}">Compartir</button><a class="btn" href="${e.src}" download style="text-decoration:none">Descargar</a></div>
   <div class="chs" id="c${e.i}">${e.ch.map(([s,t])=>`<div class="ch" data-i="${e.i}" data-s="${s}"><b>${fmt(s)}</b><span class="${t.startsWith('♪')||/ – /.test(t)?'song':''}">${t}</span></div>`).join('')}</div>
   </div></div>`).join(''):`<p class="lead">Próximamente.</p>`;
  L.querySelectorAll('.play').forEach(b=>b.onclick=()=>load(+b.dataset.i,null));
  L.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>document.getElementById('c'+b.dataset.o).classList.toggle('open'));
- L.querySelectorAll('.ch').forEach(r=>r.onclick=()=>load(+r.dataset.i,+r.dataset.s))}
-function load(i,s){const e=EPS[i];
- if(cur!==i){cur=i;a.src=e.src;document.body.style.setProperty('--c',C[e.color]);document.getElementById('nt').textContent=e.show+' '+e.ep+' · '+fecha(e.fecha)}
- if(s!=null)a.currentTime=s; else if(a.paused){a.play();return} else {a.pause();return}
+ L.querySelectorAll('.ch').forEach(r=>r.onclick=()=>load(+r.dataset.i,+r.dataset.s));
+ L.querySelectorAll('[data-sh]').forEach(b=>b.onclick=()=>compartir(+b.dataset.sh,null))}
+const enlace=(i,t)=>{const e=EPS[i];return `https://rodrigomadera.com/podcast/${e.slug}/${e.num}/`+(t>30?`?t=${Math.floor(t)}`:'')};
+function aviso(x){const o=document.getElementById('toast');o.textContent=x;o.classList.add('on');setTimeout(()=>o.classList.remove('on'),1800)}
+function compartir(i,t){const e=EPS[i],u=enlace(i,t),titulo=e.show+' '+e.ep;
+ if(navigator.share)navigator.share({title:titulo,text:'Escucha '+titulo+' con Rodrigo Madera',url:u}).catch(()=>{});
+ else{navigator.clipboard?.writeText(u);aviso('Enlace copiado, pégalo en Facebook o WhatsApp')}}
+const posKey=i=>'pos-'+EPS[i].slug+'-'+EPS[i].num;
+function preparar(i){const e=EPS[i];cur=i;a.src=e.src;a._ms=0;document.body.style.setProperty('--c',C[e.color]);
+ document.getElementById('nt').textContent=e.show+' '+e.ep+' · '+fecha(e.fecha);document.getElementById('nc').textContent='Listo para escuchar';
+ let p=0;try{p=+localStorage.getItem(posKey(i))||0}catch(_){}
+ if(p>30&&p<e.dur-60){a._resume=p;document.getElementById('nc').textContent='Continúa donde te quedaste · '+fmt(p)}}
+function load(i,s){
+ if(cur!==i)preparar(i);
+ if(s==null&&a._resume){s=a._resume}a._resume=0;
+ if(s!=null)a.currentTime=s; else if(!a.paused){a.pause();return}
  a.play()}
-const bp=document.getElementById('bp');bp.onclick=()=>cur==null?load(0,null):(a.paused?a.play():a.pause());
+const bp=document.getElementById('bp');bp.onclick=()=>cur==null?load(0,null):(a.paused?load(cur,null):a.pause());
 a.onplay=a.onpause=()=>{bp.textContent=a.paused?'▶':'❚❚';document.querySelectorAll('.play').forEach(b=>b.textContent=(+b.dataset.i===cur&&!a.paused)?'❚❚':'▶')};
 document.getElementById('b15').onclick=()=>a.currentTime-=15;document.getElementById('f15').onclick=()=>a.currentTime+=15;
 const sp=document.getElementById('sp'),R=[1,1.25,1.5];sp.onclick=()=>{a.playbackRate=R[(R.indexOf(a.playbackRate)+1)%3];sp.textContent=a.playbackRate+'x'};
-document.getElementById('sh').onclick=()=>{if(cur==null)return;const u=location.href.split('#')[0]+'#'+EPS[cur].src.split('/').slice(-2).join('/')+'@'+Math.floor(a.currentTime);navigator.clipboard?.writeText(u);document.getElementById('sh').textContent='¡Copiado!';setTimeout(()=>document.getElementById('sh').textContent='Compartir',1500)};
+document.getElementById('sh').onclick=()=>{if(cur!=null)compartir(cur,a.currentTime)};
 document.getElementById('pg').onclick=ev=>{if(!a.duration)return;const r=ev.currentTarget.getBoundingClientRect();a.currentTime=(ev.clientX-r.left)/r.width*a.duration};
 a.ontimeupdate=()=>{if(cur==null)return;const e=EPS[cur],t=a.currentTime;
  document.getElementById('pf').style.width=(a.duration?t/a.duration*100:0)+'%';
  document.getElementById('t1').textContent=fmt(t);document.getElementById('t2').textContent=fmt(a.duration);
  let k=0;e.ch.forEach(([s],j)=>{if(t>=s)k=j});document.getElementById('nc').textContent=e.ch[k][1];
  document.querySelectorAll('.ch').forEach(r=>r.classList.toggle('now',+r.dataset.i===cur&&+r.dataset.s===e.ch[k][0]));
- try{localStorage.setItem('pos'+cur,t)}catch(_){}
- if('mediaSession'in navigator&&!a._ms){a._ms=1;navigator.mediaSession.metadata=new MediaMetadata({title:e.show+' '+e.ep,artist:'Rodrigo Madera',album:e.show})}};
+ try{localStorage.setItem(posKey(cur),t)}catch(_){}
+ if('mediaSession'in navigator&&!a._ms){a._ms=1;navigator.mediaSession.metadata=new MediaMetadata({title:e.show+' '+e.ep,artist:'Rodrigo Madera',album:e.show,artwork:[{src:'/podcast/img/'+e.slug+'.png',sizes:'1400x1400',type:'image/png'}]})}};
 a.onloadedmetadata=()=>{const pg=document.getElementById('pg');pg.querySelectorAll('u').forEach(u=>u.remove());
  EPS[cur].ch.forEach(([s])=>{const u=document.createElement('u');u.style.left=s/a.duration*100+'%';pg.appendChild(u)})};
-fetch('episodios.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{EPS=d.filter(e=>!e.disponible||new Date(e.disponible)<=Date.now());tabs();list()});
+const FEED='rodrigomadera.com/podcast/feed.xml';
+document.getElementById('apps').innerHTML=[
+ ['Apple Podcasts','podcast://'+FEED],['Pocket Casts','pktc://subscribe/'+FEED],['Overcast','overcast://x-callback-url/add?url=https://'+FEED],
+ ['AntennaPod','https://antennapod.org/deeplink/subscribe?url=https://'+FEED]].map(([n,u])=>`<a class="btn" href="${u}">${n}</a>`).join('')+
+ `<button class="btn" id="rss">Copiar enlace RSS</button><a class="btn" href="lista.m3u" download>Lista M3U</a>`;
+document.getElementById('rss').onclick=()=>{navigator.clipboard?.writeText('https://'+FEED);aviso('RSS copiado: pégalo en tu app de podcasts')};
+fetch('episodios.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{EPS=d.filter(e=>!e.disponible||new Date(e.disponible)<=Date.now());tabs();list();
+ const q=new URLSearchParams(location.search),id=q.get('ep');if(!id)return;
+ const i=EPS.findIndex(e=>e.slug+'-'+e.num===id);if(i<0)return;
+ preparar(i);const t=+q.get('t');if(t>0){a._resume=t;document.getElementById('nc').textContent='Empieza en el minuto '+fmt(t)}
+ const card=document.getElementById('ep-'+id);card.classList.add('foco');card.scrollIntoView({block:'center'})});
 </script></body></html>

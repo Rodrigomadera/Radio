@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+  <title>Hypeando · Rodrigo Madera</title>
+  <link>https://rodrigomadera.com/podcast/</link>
+  <atom:link href="https://rodrigomadera.com/podcast/hypeando/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>El impulso disruptivo: lo que se viralizó, tecnología, estrenos y chismecito internacional. Jueves 8:00 pm por Impulso FM 107.3.</description>
+  <language>es-mx</language>
+  <itunes:author>Rodrigo Madera</itunes:author>
+  <itunes:image href="https://rodrigomadera.com/podcast/img/hypeando.png"/>
+  <image><url>https://rodrigomadera.com/podcast/img/hypeando.png</url><title>Hypeando · Rodrigo Madera</title><link>https://rodrigomadera.com/podcast/</link></image>
+  <itunes:category text="Music"/>
+  <itunes:explicit>false</itunes:explicit>
+  <itunes:block>Yes</itunes:block>
+  <podcast:locked>yes</podcast:locked>
+  <item>
+   <title>Hypeando Temp.1 Ep.1</title>
+   <link>https://rodrigomadera.com/podcast/hypeando/1/</link>
+   <guid isPermaLink="false">rodrigomadera-hypeando-1-1</guid>
+   <pubDate>Thu, 01 Oct 2026 21:00:00 -0500</pubDate>
+   <description>Transmitido el jueves 1 de octubre de 2026 por Impulso FM 107.3.
+
+0:00 Apertura · Lo más hype de septiembre: Aleks Syntek
+1:22 ♪ Aleks Syntek y la Gente Normal – Más fuerte de lo que pensaba
+5:18 Aleks Syntek y lo que sigue
+5:50 ♪ Lasso – Ojos marrones
+8:50 La bruja de Tepoztlán
+9:20 ♪ Sabrina Carpenter – Manchild
+11:50 Manchild, el himno
+12:40 ♪ Fonseca – Eres mi sueño
+15:13 Salida a corte
+15:23 El estreno de la semana: Madonna y Charli XCX
+16:54 ♪ Madonna &amp; Charli XCX – Danceteria Afterhours
+20:38 Jesse &amp; Joy: la pausa del dueto
+21:38 ♪ Jesse &amp; Joy – Espacio sideral
+25:00 Chismecito de robots: el incidente de la wiki
+27:03 ♪ El Cuarteto de Nos – Nada es gratis en la vida
+31:02 Cuarteto de Nos y salida a corte
+31:56 La trivia · El hype-ómetro: la gorra en San Lázaro
+33:54 ♪ Funkorama – Smooth Talker
+37:04 Saludos a Chetumal y Rodrigo Madera Podcast
+37:59 ♪ Karol G, Judeline &amp; Rusowsky – BbY WOW
+41:19 Karol G en el número uno
+42:42 ♪ Ya Ice Dilan, Rey Tony, Helabusador, JipMusic Global &amp; DJ Honda – Dichavate
+46:11 Dichavate y salida a corte
+47:06 Respuesta de la trivia: AC/DC
+47:46 ♪ AC/DC – Thunderstruck
+52:48 Despedida
+54:34 ♪ Queen – Don&#x27;t Stop Me Now
+58:02 Cierre
+
+Escúchalo en https://rodrigomadera.com/podcast/hypeando/1/</description>
+   <enclosure url="https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/hypeando/01.mp3" length="139881470" type="audio/mpeg"/>
+   <itunes:duration>3497</itunes:duration>
+   <itunes:season>1</itunes:season><itunes:episode>1</itunes:episode>
+   <itunes:image href="https://rodrigomadera.com/podcast/img/hypeando.png"/>
+   <podcast:chapters url="https://rodrigomadera.com/podcast/hypeando/1/chapters.json" type="application/json+chapters"/>
+  </item>
+ </channel>
+</rss>

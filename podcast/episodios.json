@@ -80,7 +80,11 @@
    ]
   ],
   "fecha": "2026-10-02",
-  "dur": 3966
+  "dur": 3966,
+  "slug": "cronicas-migajeras",
+  "temp": 1,
+  "num": 1,
+  "bytes": 158624062
  },
  {
   "show": "Hypeando",
@@ -203,7 +207,11 @@
    ]
   ],
   "fecha": "2026-10-01",
-  "dur": 3497
+  "dur": 3497,
+  "slug": "hypeando",
+  "temp": 1,
+  "num": 1,
+  "bytes": 139881470
  },
  {
   "show": "Sábado de Rush",
@@ -219,6 +227,10 @@
     0,
     "Sábado de Rush #1"
    ]
-  ]
+  ],
+  "slug": "sabado-de-rush",
+  "temp": 1,
+  "num": 1,
+  "bytes": 146675638
  }
 ]

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+  <title>Crónicas Migajeras · Rodrigo Madera</title>
+  <link>https://rodrigomadera.com/podcast/</link>
+  <atom:link href="https://rodrigomadera.com/podcast/cronicas-migajeras/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Porque alguien tenía que ponerle música a lo que no dijiste. Amor, desamor y dedicatorias. Viernes 8:00 pm por Impulso FM 107.3.</description>
+  <language>es-mx</language>
+  <itunes:author>Rodrigo Madera</itunes:author>
+  <itunes:image href="https://rodrigomadera.com/podcast/img/cronicas-migajeras.png"/>
+  <image><url>https://rodrigomadera.com/podcast/img/cronicas-migajeras.png</url><title>Crónicas Migajeras · Rodrigo Madera</title><link>https://rodrigomadera.com/podcast/</link></image>
+  <itunes:category text="Music"/>
+  <itunes:explicit>false</itunes:explicit>
+  <itunes:block>Yes</itunes:block>
+  <podcast:locked>yes</podcast:locked>
+  <item>
+   <title>Crónicas Migajeras Temp.1 Ep.1</title>
+   <link>https://rodrigomadera.com/podcast/cronicas-migajeras/1/</link>
+   <guid isPermaLink="false">rodrigomadera-cronicas-migajeras-1-1</guid>
+   <pubDate>Fri, 02 Oct 2026 21:00:00 -0500</pubDate>
+   <description>Transmitido el viernes 2 de octubre de 2026 por Impulso FM 107.3.
+
+0:00 Apertura
+1:01 Ela Taubert – ¿Cómo pasó?
+3:55 Luis Miguel – Fría como el viento
+7:35 Moderatto – Quemándome de amor
+11:48 Joaquina – Desahogo
+14:46 José José – Gavilán o paloma
+18:46 Alejandra Guzmán – Llama por favor
+23:51 Rocío Dúrcal – La gata bajo la lluvia
+27:26 Simone – Procuro olvidarte
+32:00 Cristian Castro – No podrás
+36:42 Yami Safdie &amp; Camilo – Querida yo
+38:29 Pablo Ruiz – Aire
+43:11 PXNDX – Los malaventurados no lloran
+46:28 Juan Gabriel – Ya lo sé que tú te vas
+50:29 Laura Pausini – La soledad
+54:13 Julieta Venegas – Me voy
+57:09 Yuridia – Él lo tiene todo
+1:01:23 Natalia Lafourcade – Hasta la raíz
+
+Escúchalo en https://rodrigomadera.com/podcast/cronicas-migajeras/1/</description>
+   <enclosure url="https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/cronicas-migajeras/01.mp3" length="158624062" type="audio/mpeg"/>
+   <itunes:duration>3966</itunes:duration>
+   <itunes:season>1</itunes:season><itunes:episode>1</itunes:episode>
+   <itunes:image href="https://rodrigomadera.com/podcast/img/cronicas-migajeras.png"/>
+   <podcast:chapters url="https://rodrigomadera.com/podcast/cronicas-migajeras/1/chapters.json" type="application/json+chapters"/>
+  </item>
+ </channel>
+</rss>
