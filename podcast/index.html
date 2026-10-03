@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Podcast · Rodrigo Madera</title>
+<meta name="description" content="Escucha completos Crónicas Migajeras, Hypeando y Sábado de Rush con Rodrigo Madera, de Impulso FM 107.3.">
+<link rel="canonical" href="https://rodrigomadera.com/podcast/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2309090B'/%3E%3Crect x='8' y='46' width='48' height='5' rx='2.5' fill='%23E5342B'/%3E%3Ctext x='32' y='38' font-family='Helvetica,Arial,sans-serif' font-size='30' font-weight='700' fill='%23F2EFE9' text-anchor='middle'%3ERM%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Rodrigo Madera"><meta property="og:locale" content="es_MX">
+<meta property="og:url" content="https://rodrigomadera.com/podcast/"><meta property="og:title" content="Podcast · Rodrigo Madera">
+<meta property="og:description" content="Los programas completos de Impulso FM 107.3, cuando quieras.">
+<meta property="og:image" content="https://rodrigomadera.com/og.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+<style>
+:root{--cabina:#09090B;--humo:#141418;--borde:#24242C;--hueso:#F2EFE9;--gris:#8A8A93;--gris-claro:#C6C3BE;
+--rosa:#FF3B6B;--cian:#2FE3C8;--ambar:#F5A623;--rojo:#E5342B;
+--display:'Unbounded','Helvetica Neue',Arial,sans-serif;--texto:'Space Grotesk','Helvetica Neue',Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--cabina);color:var(--hueso);font-family:var(--texto);padding:40px 16px 160px}
+.wrap{max-width:980px;margin:0 auto}
+.kicker{font-family:ui-monospace,Menlo,monospace;color:var(--ambar);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,7vw,72px);line-height:.95;margin:10px 0 8px}
+.lead{color:var(--gris-claro);max-width:560px}
+.tabs{display:flex;gap:8px;margin:32px 0 16px;flex-wrap:wrap}
+.tab{background:none;border:1px solid var(--borde);color:var(--gris-claro);font:600 13px var(--texto);padding:9px 16px;border-radius:99px;cursor:pointer}
+.tab.on{background:var(--hueso);color:var(--cabina);border-color:var(--hueso)}
+.ep{background:var(--humo);border:1px solid var(--borde);border-radius:18px;padding:22px;display:grid;grid-template-columns:120px 1fr;gap:22px;margin-bottom:14px}
+.cover{aspect-ratio:1;border-radius:12px;display:flex;align-items:flex-end;padding:10px;font:800 15px/1 var(--display);color:var(--cabina)}
+.show{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase}
+.ep h2{font:700 22px/1.15 var(--display);margin:6px 0 4px}
+.fecha{color:var(--hueso);font-size:14px;margin:2px 0 6px;text-transform:none}.fecha::first-letter{text-transform:uppercase}
+.meta{color:var(--gris);font-size:13px}
+.row{display:flex;gap:10px;margin-top:14px;align-items:center;flex-wrap:wrap}
+.play{width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;font-size:18px;color:var(--cabina)}
+.btn{background:none;border:1px solid var(--borde);color:var(--gris-claro);border-radius:99px;padding:8px 14px;font:500 13px var(--texto);cursor:pointer}
+.chs{margin-top:14px;border-top:1px solid var(--borde);display:none;max-height:300px;overflow:auto}
+.chs.open{display:block}
+.ch{display:flex;gap:14px;padding:9px 4px;border-bottom:1px solid var(--borde);cursor:pointer;font-size:14px}
+.ch:hover{background:#1b1b21}.ch b{font:500 12px ui-monospace,Menlo,monospace;color:var(--gris);min-width:58px;padding-top:2px}
+.ch.now{color:var(--c)}.ch.now b{color:var(--c)}
+.song{color:var(--gris-claro)}
+/* barra fija */
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(20,20,24,.96);backdrop-filter:blur(10px);border-top:1px solid var(--borde);padding:12px 16px}
+.bar .in{max-width:980px;margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}
+.ctr{display:flex;gap:8px;align-items:center}
+.ctr button{background:none;border:0;color:var(--hueso);cursor:pointer;font:600 13px var(--texto)}
+.ctr .big{width:44px;height:44px;border-radius:50%;background:var(--hueso);color:var(--cabina);font-size:17px}
+.now-t{font:700 14px var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.now-c{font-size:12px;color:var(--gris);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prog{position:relative;height:6px;background:var(--borde);border-radius:9px;margin-top:8px;cursor:pointer}
+.prog i{position:absolute;inset:0 auto 0 0;background:var(--c,var(--rosa));border-radius:9px}
+.prog u{position:absolute;top:-2px;width:2px;height:10px;background:var(--gris);opacity:.6}
+.tm{font:12px ui-monospace,Menlo,monospace;color:var(--gris);display:flex;justify-content:space-between;margin-top:4px}
+.right{display:flex;gap:8px}
+@media(max-width:640px){.ep{grid-template-columns:72px 1fr;gap:14px;padding:16px}.ep h2{font-size:17px}
+.bar .in{grid-template-columns:1fr}.right{display:none}}
+.mock{position:fixed;top:10px;right:10px;background:var(--ambar);color:#000;font:700 11px ui-monospace,monospace;padding:4px 8px;border-radius:6px}
+</style></head><body>
+<div class="wrap">
+  <div class="kicker"><a href="/radio/" style="color:inherit;text-decoration:none">← Radio</a> · Impulso FM 107.3</div>
+  <h1>Podcast</h1>
+  <p class="lead">Todos los programas completos, cuando quieras. Toca un capítulo para saltar directo a esa canción o a ese tema.</p>
+  <div class="tabs" id="tabs"></div>
+  <div id="list"></div>
+</div>
+<div class="bar"><div class="in">
+  <div class="ctr"><button id="b15">↺15</button><button class="big" id="bp">▶</button><button id="f15">15↻</button></div>
+  <div><div class="now-t" id="nt">Elige un episodio</div><div class="now-c" id="nc">—</div>
+    <div class="prog" id="pg"><i id="pf"></i></div><div class="tm"><span id="t1">0:00</span><span id="t2">0:00</span></div></div>
+  <div class="right"><button class="btn" id="sp">1x</button><button class="btn" id="sh">Compartir</button></div>
+</div></div>
+<audio id="a" preload="none"></audio>
+<script>
+let EPS=[];
+const C={rosa:'#FF3B6B',cian:'#2FE3C8',ambar:'#F5A623'};
+const a=document.getElementById('a');let cur=null,filtro='Todos';
+const fecha=f=>new Date(f+'T12:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+const fmt=s=>{s=Math.floor(s||0);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=String(s%60).padStart(2,'0');return h?`${h}:${String(m).padStart(2,'0')}:${x}`:`${m}:${x}`};
+function tabs(){const t=['Todos',...new Set(EPS.map(e=>e.show)),'Sábado de Rush'];
+ document.getElementById('tabs').innerHTML=t.map(x=>`<button class="tab ${x==filtro?'on':''}">${x}</button>`).join('');
+ document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{filtro=b.textContent;tabs();list()})}
+function list(){const L=document.getElementById('list');
+ const eps=EPS.map((e,i)=>({...e,i})).filter(e=>filtro=='Todos'||e.show==filtro);
+ L.innerHTML=eps.length?eps.map(e=>`<div class="ep" style="--c:${C[e.color]}">
+  <div class="cover" style="background:${C[e.color]}">${e.show}</div>
+  <div><div class="show" style="color:${C[e.color]}">${e.show} · ${e.dia}</div><h2>${e.ep}</h2><div class="fecha">📻 Transmitido el ${fecha(e.fecha)}</div>
+  <div class="meta">${fmt(e.dur)} · ${e.ch.length} capítulos · 320 kbps</div>
+  <div class="row"><button class="play" style="background:${C[e.color]}" data-i="${e.i}">▶</button>
+  <button class="btn" data-o="${e.i}">Capítulos</button><a class="btn" href="${e.src}" download style="text-decoration:none">Descargar</a></div>
+  <div class="chs" id="c${e.i}">${e.ch.map(([s,t])=>`<div class="ch" data-i="${e.i}" data-s="${s}"><b>${fmt(s)}</b><span class="${t.startsWith('♪')||/ – /.test(t)?'song':''}">${t}</span></div>`).join('')}</div>
+  </div></div>`).join(''):`<p class="lead">Próximamente.</p>`;
+ L.querySelectorAll('.play').forEach(b=>b.onclick=()=>load(+b.dataset.i,null));
+ L.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>document.getElementById('c'+b.dataset.o).classList.toggle('open'));
+ L.querySelectorAll('.ch').forEach(r=>r.onclick=()=>load(+r.dataset.i,+r.dataset.s))}
+function load(i,s){const e=EPS[i];
+ if(cur!==i){cur=i;a.src=e.src;document.body.style.setProperty('--c',C[e.color]);document.getElementById('nt').textContent=e.show+' '+e.ep+' · '+fecha(e.fecha)}
+ if(s!=null)a.currentTime=s; else if(a.paused){a.play();return} else {a.pause();return}
+ a.play()}
+const bp=document.getElementById('bp');bp.onclick=()=>cur==null?load(0,null):(a.paused?a.play():a.pause());
+a.onplay=a.onpause=()=>{bp.textContent=a.paused?'▶':'❚❚';document.querySelectorAll('.play').forEach(b=>b.textContent=(+b.dataset.i===cur&&!a.paused)?'❚❚':'▶')};
+document.getElementById('b15').onclick=()=>a.currentTime-=15;document.getElementById('f15').onclick=()=>a.currentTime+=15;
+const sp=document.getElementById('sp'),R=[1,1.25,1.5];sp.onclick=()=>{a.playbackRate=R[(R.indexOf(a.playbackRate)+1)%3];sp.textContent=a.playbackRate+'x'};
+document.getElementById('sh').onclick=()=>{if(cur==null)return;const u=location.href.split('#')[0]+'#'+EPS[cur].src.split('/').slice(-2).join('/')+'@'+Math.floor(a.currentTime);navigator.clipboard?.writeText(u);document.getElementById('sh').textContent='¡Copiado!';setTimeout(()=>document.getElementById('sh').textContent='Compartir',1500)};
+document.getElementById('pg').onclick=ev=>{if(!a.duration)return;const r=ev.currentTarget.getBoundingClientRect();a.currentTime=(ev.clientX-r.left)/r.width*a.duration};
+a.ontimeupdate=()=>{if(cur==null)return;const e=EPS[cur],t=a.currentTime;
+ document.getElementById('pf').style.width=(a.duration?t/a.duration*100:0)+'%';
+ document.getElementById('t1').textContent=fmt(t);document.getElementById('t2').textContent=fmt(a.duration);
+ let k=0;e.ch.forEach(([s],j)=>{if(t>=s)k=j});document.getElementById('nc').textContent=e.ch[k][1];
+ document.querySelectorAll('.ch').forEach(r=>r.classList.toggle('now',+r.dataset.i===cur&&+r.dataset.s===e.ch[k][0]));
+ try{localStorage.setItem('pos'+cur,t)}catch(_){}
+ if('mediaSession'in navigator&&!a._ms){a._ms=1;navigator.mediaSession.metadata=new MediaMetadata({title:e.ep,artist:'Rodrigo Madera',album:e.show})}};
+a.onloadedmetadata=()=>{const pg=document.getElementById('pg');pg.querySelectorAll('u').forEach(u=>u.remove());
+ EPS[cur].ch.forEach(([s])=>{const u=document.createElement('u');u.style.left=s/a.duration*100+'%';pg.appendChild(u)})};
+fetch('episodios.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{EPS=d;tabs();list()});
+</script></body></html>

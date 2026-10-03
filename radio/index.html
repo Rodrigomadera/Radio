@@ -375,7 +375,7 @@
 <footer>
   <div class="wrap pie">
     <p>Rodrigo Madera · Cancún, Quintana Roo</p>
-    <p>Al aire en Impulso FM 107.3 · <a href="/" style="color:inherit">rodrigomadera.com</a></p>
+    <p>Al aire en Impulso FM 107.3 · <a href="/podcast/" style="color:inherit">Podcast</a> · <a href="/" style="color:inherit">rodrigomadera.com</a></p>
   </div>
 </footer>
 
@@ -714,7 +714,7 @@ var CONFIG = {
             : '<div class="ep">' + etq + "</div>";
         }).join("");
 
-        caja.innerHTML = '<p class="eyebrow">Últimos episodios</p>' + filas;
+        caja.innerHTML = '<p class="eyebrow">Últimos episodios · <a href="/podcast/" style="color:inherit">escúchalos completos aquí</a></p>' + filas;
         caja.hidden = false;
       })
       .catch(function () { /* sin episodios: la sección se queda oculta */ });
