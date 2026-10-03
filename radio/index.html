@@ -119,6 +119,17 @@
   .prog .dia .detalle b{color:var(--hueso);font-weight:700}
   .prog .lin{font-size:14px;color:var(--gris-claro);margin:0}
   .prog .sec{font-size:13px;color:var(--gris);margin:0;line-height:1.55}
+  /* mini reproductor: el ultimo programa de cada show */
+  .mini{margin-top:auto;border-top:1px solid var(--borde);padding-top:16px;display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center}
+  .mini button{width:44px;height:44px;border-radius:50%;border:0;background:var(--ac);color:var(--cabina);font-size:15px;cursor:pointer}
+  .mini .t{font-size:13px;color:var(--hueso);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mini .f{font-size:12px;color:var(--gris)}
+  .mini .bar{grid-column:1/-1;height:4px;background:var(--borde);border-radius:9px;cursor:pointer;position:relative}
+  .mini .bar i{position:absolute;inset:0 auto 0 0;width:0;background:var(--ac);border-radius:9px}
+  .mini .pie{grid-column:1/-1;display:flex;justify-content:space-between;font-size:12px;color:var(--gris)}
+  .mini .pie a{color:var(--ac);text-decoration:none;font-weight:600}
+  .mini .ya{grid-column:1/-1;margin:0 0 -2px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--ac)}
+  .mini.vacio{display:block;font-size:13px;color:var(--gris)}
 
   /* ---------- linea de enlaces ---------- */
   .enlaces-sec{padding-block:0 8px}
@@ -539,8 +550,58 @@ var CONFIG = {
         "<h3><span>" + esc(p.nombre) + "</span></h3>" +
         '<p class="lin">' + esc(p.lema) + "</p>" +
         '<p class="sec">' + esc(p.secciones) + "</p>";
+      art.dataset.show = p.nombre;
       cont.appendChild(art);
     });
+    ponerMinis();
+  }
+
+  /* Debajo de cada programa, su ultimo episodio (datos en /podcast/episodios.json). */
+  function ponerMinis() {
+    var audio = new Audio(), actual = null;
+    var reloj = function (s) { s = Math.floor(s || 0); var h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = String(s % 60).padStart(2, "0");
+      return h ? h + ":" + String(m).padStart(2, "0") + ":" + x : m + ":" + x; };
+    var dia = function (f) { return new Date(f + "T12:00").toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" }); };
+    fetch("/podcast/episodios.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (eps) {
+      document.querySelectorAll(".prog").forEach(function (art) {
+        var mios = eps.filter(function (e) { return e.show === art.dataset.show; })
+                      .sort(function (a, b) { return a.fecha < b.fecha ? 1 : -1; });
+        var m = document.createElement("div");
+        if (!mios.length) { m.className = "mini vacio"; m.textContent = "Muy pronto, el primer programa para escuchar aquí."; art.appendChild(m); return; }
+        var e = mios[0];
+        m.className = "mini";
+        // se estrena al terminar la transmision: antes de "disponible" solo se anuncia
+        var falta = e.disponible ? new Date(e.disponible) - Date.now() : 0;
+        if (falta > 0) {
+          var hora = new Date(e.disponible).toLocaleTimeString("es-MX", { hour: "numeric", minute: "2-digit", timeZone: "America/Cancun" });
+          m.innerHTML = '<p class="ya">Próximamente</p><button aria-label="Disponible más tarde" disabled style="opacity:.35;cursor:default">▶</button><div><div class="t">' +
+            esc(e.ep) + '</div><div class="f">Disponible hoy a partir de las ' + esc(hora) + "</div></div>";
+          art.appendChild(m);
+          if (falta < 864e5) setTimeout(function () { m.remove(); ponerUno(art, e); }, falta + 1000);
+          return;
+        }
+        art.appendChild(m); m.remove();
+        ponerUno(art, e);
+      });
+      ["play", "pause", "timeupdate"].forEach(function (ev) { audio.addEventListener(ev, function () { if (actual) actual._pintar(); }); });
+      window.addEventListener("solo", function (ev) { if (ev.detail !== "mini") audio.pause(); });
+    }).catch(function () {});
+
+    function ponerUno(art, e) {
+        var m = document.createElement("div");
+        m.className = "mini";
+        m.innerHTML = '<p class="ya">Escucha ahora</p><button aria-label="Reproducir">▶</button><div><div class="t">' + esc(e.ep) + '</div><div class="f">Último programa · ' + esc(dia(e.fecha)) + "</div></div>" +
+          '<div class="bar"><i></i></div><div class="pie"><span class="tm">0:00 / ' + reloj(e.dur) + '</span><a href="/podcast/">Todos los episodios →</a></div>';
+        var b = m.querySelector("button"), barra = m.querySelector(".bar"), fill = m.querySelector(".bar i"), tm = m.querySelector(".tm");
+        m._pintar = function () { b.textContent = actual === m && !audio.paused ? "❚❚" : "▶";
+          if (actual === m) { fill.style.width = (audio.currentTime / (audio.duration || e.dur) * 100) + "%"; tm.textContent = reloj(audio.currentTime) + " / " + reloj(e.dur); } };
+        b.onclick = function () {
+          if (actual !== m) { var antes = actual; actual = m; audio.src = e.src; if (antes) antes._pintar(); }
+          if (audio.paused) { window.dispatchEvent(new CustomEvent("solo", { detail: "mini" })); audio.play(); } else audio.pause();
+        };
+        barra.onclick = function (ev) { if (actual !== m) b.onclick(); var r = barra.getBoundingClientRect(); audio.currentTime = (ev.clientX - r.left) / r.width * e.dur; };
+        art.appendChild(m);
+    }
   }
 
   /* ---------------- linea de enlaces ---------------- */
@@ -747,12 +808,15 @@ var CONFIG = {
   btn.addEventListener("click", function () {
     if (!audio.paused) { audio.pause(); audio.src = ""; estado("Detenido", false); return; }
     estado("Conectando", false);
+    window.dispatchEvent(new CustomEvent("solo", { detail: "vivo" }));
     // se reasigna en cada arranque para no reanudar un buffer viejo
     audio.src = CONFIG.stream + (CONFIG.stream.indexOf("?") > -1 ? "&" : "?") + "t=" + Date.now();
     audio.play().then(function () { estado("Al aire", true); })
       .catch(function () { estado("No se pudo conectar", false); });
   });
 
+  // un solo audio a la vez: si suena un programa grabado, se corta el en vivo
+  window.addEventListener("solo", function (ev) { if (ev.detail !== "vivo" && !audio.paused) { audio.pause(); audio.src = ""; estado("Detenido", false); } });
   audio.addEventListener("waiting", function () { estado("Cargando", true); });
   audio.addEventListener("playing", function () { estado("Al aire", true); });
   audio.addEventListener("error", function () { estado("Sin señal", false); });

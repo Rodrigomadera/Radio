@@ -204,5 +204,21 @@
   ],
   "fecha": "2026-10-01",
   "dur": 3497
+ },
+ {
+  "show": "Sábado de Rush",
+  "ep": "#1 · El estreno",
+  "dia": "Sábado 8:00 pm",
+  "color": "cian",
+  "src": "https://shows.rodrigomadera.com/sabado-de-rush/01.mp3",
+  "fecha": "2026-10-03",
+  "dur": 3667,
+  "disponible": "2026-10-03T21:00:00-05:00",
+  "ch": [
+   [
+    0,
+    "Sábado de Rush #1"
+   ]
+  ]
  }
 ]

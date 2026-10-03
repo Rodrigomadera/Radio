@@ -74,7 +74,7 @@ const C={rosa:'#FF3B6B',cian:'#2FE3C8',ambar:'#F5A623'};
 const a=document.getElementById('a');let cur=null,filtro='Todos';
 const fecha=f=>new Date(f+'T12:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 const fmt=s=>{s=Math.floor(s||0);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=String(s%60).padStart(2,'0');return h?`${h}:${String(m).padStart(2,'0')}:${x}`:`${m}:${x}`};
-function tabs(){const t=['Todos',...new Set(EPS.map(e=>e.show)),'Sábado de Rush'];
+function tabs(){const t=['Todos',...new Set([...EPS.map(e=>e.show),'Sábado de Rush'])];
  document.getElementById('tabs').innerHTML=t.map(x=>`<button class="tab ${x==filtro?'on':''}">${x}</button>`).join('');
  document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{filtro=b.textContent;tabs();list()})}
 function list(){const L=document.getElementById('list');
@@ -109,5 +109,5 @@ a.ontimeupdate=()=>{if(cur==null)return;const e=EPS[cur],t=a.currentTime;
  if('mediaSession'in navigator&&!a._ms){a._ms=1;navigator.mediaSession.metadata=new MediaMetadata({title:e.ep,artist:'Rodrigo Madera',album:e.show})}};
 a.onloadedmetadata=()=>{const pg=document.getElementById('pg');pg.querySelectorAll('u').forEach(u=>u.remove());
  EPS[cur].ch.forEach(([s])=>{const u=document.createElement('u');u.style.left=s/a.duration*100+'%';pg.appendChild(u)})};
-fetch('episodios.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{EPS=d;tabs();list()});
+fetch('episodios.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{EPS=d.filter(e=>!e.disponible||new Date(e.disponible)<=Date.now());tabs();list()});
 </script></body></html>
