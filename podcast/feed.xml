@@ -14,6 +14,22 @@
   <itunes:block>Yes</itunes:block>
   <podcast:locked>yes</podcast:locked>
   <item>
+   <title>Sábado de Rush Temp.1 Ep.1</title>
+   <link>https://rodrigomadera.com/podcast/sabado-de-rush/1/</link>
+   <guid isPermaLink="false">rodrigomadera-sabado-de-rush-1-1</guid>
+   <pubDate>Sat, 03 Oct 2026 21:00:00 -0500</pubDate>
+   <description>Transmitido el sábado 3 de octubre de 2026 por Impulso FM 107.3.
+
+0:00 Sábado de Rush #1
+
+Escúchalo en https://rodrigomadera.com/podcast/sabado-de-rush/1/</description>
+   <enclosure url="https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/sabado-de-rush/01.mp3" length="146675638" type="audio/mpeg"/>
+   <itunes:duration>3667</itunes:duration>
+   <itunes:season>1</itunes:season><itunes:episode>1</itunes:episode>
+   <itunes:image href="https://rodrigomadera.com/podcast/img/sabado-de-rush.png"/>
+   <podcast:chapters url="https://rodrigomadera.com/podcast/sabado-de-rush/1/chapters.json" type="application/json+chapters"/>
+  </item>
+  <item>
    <title>Crónicas Migajeras Temp.1 Ep.1</title>
    <link>https://rodrigomadera.com/podcast/cronicas-migajeras/1/</link>
    <guid isPermaLink="false">rodrigomadera-cronicas-migajeras-1-1</guid>
