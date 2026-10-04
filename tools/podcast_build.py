@@ -61,6 +61,31 @@ p b{{color:{color}}}</style></head><body><div class="top"></div><h1><span>{e_(na
                     f'--screenshot={out}', f'file://{f.name}'], capture_output=True, check=True)
 
 
+def episode_card(e, color, out):
+    """Facebook/WhatsApp card for one episode: show name, episode and a big play button."""
+    if out.exists():
+        return
+    page = f'''<html><head><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,900&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet">
+<style>*{{margin:0}}body{{width:1200px;height:630px;background:#09090B;color:#F2EFE9;font-family:'Space Grotesk';position:relative;overflow:hidden}}
+.top{{position:absolute;left:0;right:0;top:0;height:12px;background:{color}}}
+.k{{position:absolute;left:60px;top:70px;font-size:24px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:{color}}}
+h1{{position:absolute;left:60px;top:120px;width:700px;font-family:Archivo;font-stretch:112%;font-weight:900;font-size:{min(118, 700 / (.74 * max(map(len, e['show'].split())))):.0f}px;line-height:1}}
+h1 span{{background:linear-gradient(transparent 66%,{color} 66% 97%,transparent 97%);-webkit-box-decoration-break:clone}}
+.ep{{position:absolute;left:60px;bottom:120px;font-size:40px;font-weight:700}}
+.f{{position:absolute;left:60px;bottom:66px;font-size:24px;color:#C6C3BE}}
+.play{{position:absolute;right:90px;top:50%;transform:translateY(-50%);width:230px;height:230px;border-radius:50%;background:{color};
+box-shadow:0 0 0 22px rgba(255,255,255,.06)}}
+.play:after{{content:"";position:absolute;left:88px;top:62px;border-style:solid;border-width:53px 0 53px 88px;border-color:transparent transparent transparent #09090B}}
+.lbl{{position:absolute;right:90px;width:230px;text-align:center;bottom:66px;font-size:24px;letter-spacing:.2em;font-weight:700;text-transform:uppercase}}
+</style></head><body><div class="top"></div><div class="k">Escucha ahora</div><h1><span>{e_(e['show'])}</span></h1>
+<div class="ep">{e_(e['ep'])}</div><div class="f">{e_(fecha_larga(e['fecha']).capitalize())} · Impulso FM 107.3</div>
+<div class="play"></div><div class="lbl">Dale play</div></body></html>'''
+    with tempfile.NamedTemporaryFile('w', suffix='.html', delete=False) as f:
+        f.write(page)
+    subprocess.run([CHROME, '--headless=new', '--hide-scrollbars', '--virtual-time-budget=4000', '--window-size=1200,630',
+                    f'--screenshot={out}', f'file://{f.name}'], capture_output=True, check=True)
+
+
 def main():
     now = datetime.now(timezone.utc)
     eps = json.loads((POD / 'episodios.json').read_text())
@@ -77,6 +102,8 @@ def main():
         title = f"{name} {e['ep']}"
         page = f"{SITE}/podcast/{e['slug']}/{e['num']}/"
         desc = f"Transmitido el {fecha_larga(e['fecha'])} por Impulso FM 107.3 · {clock(e['dur'])}. Escúchalo completo aquí."
+        card = f"{e['slug']}-{e['num']}-og.png"
+        episode_card(e, COLORS[e['color']], POD / 'img' / card)
         d = POD / e['slug'] / str(e['num'])
         d.mkdir(parents=True, exist_ok=True)
         (d / 'index.html').write_text(f'''<!doctype html><html lang="es"><head><meta charset="utf-8">
@@ -87,7 +114,7 @@ def main():
 <meta property="og:type" content="music.radio_station"><meta property="og:site_name" content="Rodrigo Madera">
 <meta property="og:locale" content="es_MX"><meta property="og:url" content="{page}">
 <meta property="og:title" content="▶ {e_(title)}"><meta property="og:description" content="{e_(desc)}">
-<meta property="og:image" content="{SITE}/podcast/img/{e['slug']}-og.png">
+<meta property="og:image" content="{SITE}/podcast/img/{card}">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="{e_(name)}" href="{SITE}/podcast/{e['slug']}/feed.xml">
