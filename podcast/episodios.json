@@ -270,5 +270,25 @@
   "temp": 1,
   "num": 2,
   "bytes": 123211275
+ },
+ {
+  "show": "Sábado de Rush",
+  "ep": "Temp.1 Ep.2",
+  "dia": "Sábado 8:00 pm",
+  "color": "cian",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/sabado-de-rush/02.mp3",
+  "fecha": "2026-10-10",
+  "dur": 3420,
+  "disponible": "2026-10-10T21:00:00-05:00",
+  "ch": [
+   [
+    0,
+    "Sábado de Rush #2"
+   ]
+  ],
+  "slug": "sabado-de-rush",
+  "temp": 1,
+  "num": 2,
+  "bytes": 136802263
  }
 ]
