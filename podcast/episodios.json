@@ -251,5 +251,24 @@
   "temp": 1,
   "num": 2,
   "bytes": 125599912
+ },
+ {
+  "show": "Hypeando",
+  "ep": "Temp.1 Ep.2",
+  "dia": "Jueves",
+  "color": "ambar",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/hypeando/02.mp3",
+  "ch": [
+   [
+    0,
+    "Hypeando #2"
+   ]
+  ],
+  "fecha": "2026-10-08",
+  "dur": 3080,
+  "slug": "hypeando",
+  "temp": 1,
+  "num": 2,
+  "bytes": 123211275
  }
 ]
