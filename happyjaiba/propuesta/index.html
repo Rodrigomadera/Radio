@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Happy Jaiba · Plan y presupuesto de redes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dosis:wght@500;700;800&family=Kaushan+Script&family=Nunito:wght@400;600;700;800&family=Righteous&display=swap">
+<style>
+:root{
+  --navy:#25235C; --teal:#00A093; --teal-d:#007D73; --fucsia:#D4004C; --ciruela:#9A1B57; --ambar:#F6B21B; --espuma:#FFF8EC;
+  --bg:#FFF8EC; --fg:#25235C; --surface:#FFFFFF; --muted:#5D5B86; --line:#E7DCC6;
+  --display:"Righteous","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  --caps:"Dosis","Arial Narrow",sans-serif;
+  --script:"Kaushan Script","Brush Script MT",cursive;
+  --body:"Nunito","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+img{max-width:100%}
+.wrap{max-width:920px;margin:0 auto;padding-inline:20px;padding-block:32px 72px;display:flex;flex-direction:column;gap:52px}
+h1,h2,h3,p,ul{margin:0}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(28px,5vw,42px);line-height:1.05;text-wrap:balance}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,3.4vw,28px);line-height:1.1;text-wrap:balance}
+h3{font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:15px}
+.eyebrow{font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--teal-d)}
+.lead{color:var(--muted);max-width:64ch}
+section{display:flex;flex-direction:column;gap:18px}
+.head{display:flex;flex-direction:column;gap:6px}
+ul{padding-left:20px;display:flex;flex-direction:column;gap:6px}
+li{max-width:70ch}
+.small{font-size:14px;color:var(--muted)}
+
+.cover{display:grid;grid-template-columns:170px 1fr;gap:26px;align-items:center}
+.cover img{width:100%}
+.cover .txt{display:flex;flex-direction:column;gap:10px;min-width:0}
+.meta{font-family:var(--caps);font-weight:700;letter-spacing:.06em;color:var(--muted);font-size:15px}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.price{font-family:var(--display);font-size:32px;line-height:1;font-variant-numeric:tabular-nums}
+.price small{font-family:var(--caps);font-weight:700;font-size:14px;letter-spacing:.06em;color:var(--muted)}
+.card .when{font-size:14px;color:var(--muted)}
+.total{background:var(--navy);color:#fff;border-radius:18px;padding:18px 22px;display:flex;flex-wrap:wrap;gap:8px 28px;align-items:baseline;justify-content:space-between}
+.total .price{font-size:36px;color:var(--ambar)}
+.total span{font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:14px}
+.callout{background:var(--surface);border:2px solid var(--ambar);border-radius:18px;padding:16px 20px}
+.callout b{font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+
+.nums{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.num{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;min-width:0}
+.num b{display:block;font-family:var(--display);font-weight:400;font-size:30px;line-height:1;color:var(--fucsia)}
+.num span{font-size:13.5px;color:var(--muted);line-height:1.3;display:block;margin-top:4px}
+
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;background:var(--surface);border-radius:14px;overflow:hidden;font-size:15px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:13px;background:var(--navy);color:#fff}
+tr:last-child td{border-bottom:0}
+.money td:not(:first-child),.money th:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.money tr:last-child td{background:var(--espuma)}
+.money s{color:var(--muted);font-size:13.5px}
+.month .top .split{flex-basis:100%;font-size:14px;color:var(--muted)}
+td b{font-weight:800}
+
+.month{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.month .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 20px}
+.month .top .price{font-size:28px;color:var(--fucsia)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px 28px}
+.cols>div{display:flex;flex-direction:column;gap:8px;min-width:0}
+.script{font-family:var(--script);color:var(--fucsia);font-size:24px}
+footer{border-top:1px solid var(--line);padding-top:18px;display:flex;flex-direction:column;gap:4px}
+
+@media (max-width:720px){
+  .cover{grid-template-columns:1fr}.cover img{width:150px}
+  .cards{grid-template-columns:1fr}
+  .nums{grid-template-columns:repeat(2,1fr)}
+  .cols{grid-template-columns:1fr}
+}
+@media print{ body{background:#fff} .wrap{gap:32px;padding-block:0} .month,.card,.total,.callout,table{break-inside:avoid} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="cover">
+    <img src="../logo.png" alt="Happy Jaiba Restaurante">
+    <div class="txt">
+      <span class="eyebrow">Plan de contenido y presupuesto</span>
+      <h1>90 días de redes para Happy Jaiba</h1>
+      <p class="lead">Un plan cerrado: qué se graba, cuándo se graba, qué se publica cada día y cuánto cuesta cada mes. Todo lo que aparece aquí está incluido en el precio.</p>
+      <span class="meta">Presentado por Rodrigo Madera · 10 de octubre de 2026</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="head"><span class="eyebrow">Presupuesto</span><h2>Inversión por mes</h2></div>
+    <div class="cards">
+      <div class="card"><h3>Mes 1 · Producción y arranque</h3><div class="price">$13,000</div><span class="when">12 de octubre al 15 de noviembre</span></div>
+      <div class="card"><h3>Mes 2 · Temporada de posadas</h3><div class="price">$12,000</div><span class="when">16 de noviembre al 13 de diciembre</span></div>
+      <div class="card"><h3>Mes 3 · Fiestas y cierre</h3><div class="price">$10,000</div><span class="when">14 de diciembre al 16 de enero</span></div>
+    </div>
+    <div class="total"><span>Total del plan de 90 días</span><div class="price">$35,000</div></div>
+
+    <div class="head"><h3>Cómo se compone cada mes</h3></div>
+    <div class="tw"><table class="money">
+      <tr><th>Concepto</th><th>Mes 1</th><th>Mes 2</th><th>Mes 3</th></tr>
+      <tr><td><b>Administración de redes</b><br><span class="small">Precio normal: $14,000 al mes. Precio propuesto: $10,000 al mes.</span></td><td><s>$14,000</s><br>$10,000</td><td><s>$14,000</s><br>$10,000</td><td><s>$14,000</s><br>$10,000</td></tr>
+      <tr><td><b>Producción del contenido de arranque</b><br><span class="small">$5,000 en total, repartidos en dos pagos</span></td><td>$3,000</td><td>$2,000</td><td>—</td></tr>
+      <tr><td><b>Total del mes</b></td><td><b>$13,000</b></td><td><b>$12,000</b></td><td><b>$10,000</b></td></tr>
+    </table></div>
+    <ul>
+      <li><b>Administración de redes, $10,000 al mes.</b> El precio normal es de $14,000; para Happy Jaiba proponemos $10,000. Es el servicio de todos los meses: calendario, diseño y publicación diaria, Google Business, Facebook, Instagram, TikTok, seguimiento de anuncios, reporte y las visitas de grabación programadas de cada mes.</li>
+      <li><b>Producción de arranque, $5,000.</b> El primer mes se prepara mucho más material que en un mes normal: cuatro sesiones y 14 horas de grabación, los tres videos de las noches, 12 cortes, 8 reels y 50 fotos. Ese trabajo adicional se cobra una sola vez y se reparte entre el mes 1 y el mes 2 para no cargarlo todo al inicio.</li>
+    </ul>
+    <div class="callout">
+      <p><b>La publicidad pagada va aparte.</b> El presupuesto de anuncios se paga directo a Meta (Facebook e Instagram) con la tarjeta del restaurante. Recomendamos $100 diarios, unos $3,000 al mes. Configurar y dar seguimiento a los anuncios sí está incluido en el plan.</p>
+    </div>
+    <p class="small">Precios en pesos mexicanos. En caso de requerir factura, a los precios se les agrega el IVA.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Lo que recibe</span><h2>El plan completo en números</h2></div>
+    <div class="nums">
+      <div class="num"><b>90</b><span>publicaciones, una cada día</span></div>
+      <div class="num"><b>8</b><span>sesiones de grabación, 25 horas</span></div>
+      <div class="num"><b>3</b><span>videos de las noches temáticas y 20 cortes cortos</span></div>
+      <div class="num"><b>14</b><span>reels de platillos</span></div>
+      <div class="num"><b>80</b><span>fotos editadas</span></div>
+    </div>
+    <ul>
+      <li>Las publicaciones salen en <b>Facebook</b> (red principal) e <b>Instagram</b>; los videos se suben también a <b>TikTok</b>.</li>
+      <li>Administración de <b>Google Business</b>: horarios, menú, fotos nuevas y respuesta a reseñas.</li>
+      <li>Respuesta a comentarios en Facebook e Instagram. Las reservaciones y pedidos se canalizan al WhatsApp del restaurante.</li>
+      <li><b>WhatsApp Business</b> configurado para que lo maneje su equipo: catálogo, respuestas rápidas, mensaje de bienvenida y lista de difusión, con una capacitación de una hora.</li>
+      <li>Diseño de todas las piezas con la identidad ya presentada: carteles de evento, promociones, carruseles y reseñas.</li>
+      <li>Un reporte al cierre de cada mes: alcance, reseñas nuevas, resultados de los anuncios y qué se ajusta.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Cada semana</span><h2>Qué se publica cada día</h2></div>
+    <div class="tw"><table>
+      <tr><th>Día</th><th>Publicación</th><th>Formato</th></tr>
+      <tr><td><b>Lunes</b></td><td>Platillo del menú o promoción de la semana</td><td>Foto o carrusel</td></tr>
+      <tr><td><b>Martes</b></td><td>Platillo en preparación</td><td>Reel</td></tr>
+      <tr><td><b>Miércoles</b></td><td>Mañana: Jueves de Chavorucos</td><td>Video corto</td></tr>
+      <tr><td><b>Jueves</b></td><td>Hoy: Jueves de Chavorucos</td><td>Cartel</td></tr>
+      <tr><td><b>Viernes</b></td><td>Viernes de Salsa</td><td>Video corto</td></tr>
+      <tr><td><b>Sábado</b></td><td>Sábado de Banda</td><td>Video corto</td></tr>
+      <tr><td><b>Domingo</b></td><td>Plan familiar o reseña de un cliente</td><td>Foto</td></tr>
+    </table></div>
+    <p class="small">El calendario de cada mes se envía para su aprobación antes de empezar a publicar. Las historias en vivo de cada noche las sube el personal del restaurante con la guía y las plantillas que entregamos.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Mes por mes</span><h2>Qué incluye cada pago</h2></div>
+
+    <div class="month">
+      <div class="top"><h2>Mes 1 · Producción y arranque</h2><div class="price">$13,000</div><span class="split">$10,000 de administración + $3,000 de producción de arranque</span></div>
+      <div class="tw"><table>
+        <tr><th>Sesión</th><th>Fecha</th><th>Duración</th><th>Qué se graba</th></tr>
+        <tr><td><b>1</b></td><td>Lunes 12 de octubre, de día</td><td>4 horas</td><td>Fotos de 12 platillos y 4 bebidas</td></tr>
+        <tr><td><b>2</b></td><td>Martes 13 de octubre, de día</td><td>4 horas</td><td>Video de esos platillos para reels; fachada, interior y equipo</td></tr>
+        <tr><td><b>3</b></td><td>Viernes 16 de octubre, de noche</td><td>3 horas</td><td>Viernes de Salsa con el grupo en vivo</td></tr>
+        <tr><td><b>4</b></td><td>Sábado 17 de octubre, de noche</td><td>3 horas</td><td>Sábado de Banda con la banda en vivo</td></tr>
+      </table></div>
+      <div class="cols">
+        <div><h3>Se entrega</h3><ul>
+          <li>3 videos de noches temáticas de 30 a 45 segundos: Salsa, Banda y Chavorucos.</li>
+          <li>12 cortes cortos, 4 por cada noche, para los recordatorios semanales.</li>
+          <li>8 reels de platillos.</li>
+          <li>50 fotos editadas.</li>
+          <li>28 publicaciones diarias, del 19 de octubre al 15 de noviembre.</li>
+        </ul></div>
+        <div><h3>Se deja funcionando</h3><ul>
+          <li>Google Business actualizado y código QR para pedir reseñas en mesa.</li>
+          <li>Datos y horarios iguales en Facebook, Instagram, TikTok y Google.</li>
+          <li>WhatsApp Business configurado y capacitación al equipo.</li>
+          <li>Campaña de anuncios configurada para las tres noches.</li>
+          <li>Contenido de Día de Muertos y Buen Fin.</li>
+        </ul></div>
+      </div>
+      <p class="small">El primer video de Chavorucos se arma con tomas de DJ y ambiente de esta semana. En el mes 2 se graba el jueves en vivo y se sustituye.</p>
+    </div>
+
+    <div class="month">
+      <div class="top"><h2>Mes 2 · Temporada de posadas</h2><div class="price">$12,000</div><span class="split">$10,000 de administración + $2,000 de producción de arranque (segundo y último pago)</span></div>
+      <div class="tw"><table>
+        <tr><th>Sesión</th><th>Fecha propuesta</th><th>Duración</th><th>Qué se graba</th></tr>
+        <tr><td><b>5</b></td><td>Martes 17 de noviembre, de día</td><td>3 horas</td><td>Platillos y promociones nuevas; paquetes para posadas</td></tr>
+        <tr><td><b>6</b></td><td>Jueves 19 de noviembre, de noche</td><td>3 horas</td><td>Jueves de Chavorucos en vivo</td></tr>
+      </table></div>
+      <div class="cols">
+        <div><h3>Se entrega</h3><ul>
+          <li>Video definitivo de Jueves de Chavorucos y 4 cortes cortos.</li>
+          <li>3 reels de platillos nuevos.</li>
+          <li>15 fotos editadas.</li>
+          <li>28 publicaciones diarias, del 16 de noviembre al 13 de diciembre.</li>
+        </ul></div>
+        <div><h3>Enfoque del mes</h3><ul>
+          <li>Campaña de posadas para empresas y grupos.</li>
+          <li>Seguimiento a reseñas en Google y ajuste de anuncios.</li>
+          <li>Reporte del mes.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="month">
+      <div class="top"><h2>Mes 3 · Fiestas y cierre</h2><div class="price">$10,000</div><span class="split">$10,000 de administración; la producción de arranque ya quedó cubierta</span></div>
+      <div class="tw"><table>
+        <tr><th>Sesión</th><th>Fecha propuesta</th><th>Duración</th><th>Qué se graba</th></tr>
+        <tr><td><b>7</b></td><td>Martes 15 de diciembre, de día</td><td>3 horas</td><td>Platillos y bebidas de temporada</td></tr>
+        <tr><td><b>8</b></td><td>Viernes 18 o sábado 19 de diciembre, de noche</td><td>2 horas</td><td>La noche con mejor resultado, en ambiente decembrino</td></tr>
+      </table></div>
+      <div class="cols">
+        <div><h3>Se entrega</h3><ul>
+          <li>4 cortes cortos nuevos de la noche grabada.</li>
+          <li>3 reels de platillos nuevos.</li>
+          <li>15 fotos editadas.</li>
+          <li>34 publicaciones diarias, del 14 de diciembre al 16 de enero.</li>
+        </ul></div>
+        <div><h3>Enfoque del mes</h3><ul>
+          <li>Navidad, Año Nuevo, Día de Reyes y cuesta de enero.</li>
+          <li>Reporte final de los 90 días con resultados y recomendaciones.</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Días de grabación</span><h2>Lo que necesitamos del restaurante</h2>
+      <p class="lead">Nosotros llevamos el equipo de cámara, luz y audio. Para aprovechar cada hora necesitamos lo siguiente.</p></div>
+    <div class="cols">
+      <div><h3>Antes del lunes 12</h3><ul>
+        <li>Promociones de cada noche, con precios y horarios.</li>
+        <li>Horario real del restaurante y número de WhatsApp para clientes.</li>
+        <li>Lista aprobada de los platillos y bebidas a grabar (abajo va la propuesta).</li>
+        <li>Acceso de administrador a Facebook, Instagram, TikTok y Google Business.</li>
+        <li>Nombre del grupo de salsa y de la banda, y su permiso para usar su música e imagen.</li>
+        <li>Una persona responsable que apruebe las tomas durante la sesión.</li>
+      </ul></div>
+      <div><h3>Lunes y martes, de día</h3><ul>
+        <li>Cuatro horas en horario tranquilo, de preferencia antes de abrir.</li>
+        <li>Un cocinero y un bartender asignados a la sesión.</li>
+        <li>Insumos para preparar cada platillo y bebida de la lista al menos una vez.</li>
+        <li>Una mesa con luz natural y la zona alrededor despejada.</li>
+        <li>Vajilla en buen estado, limones, hierbas y hielo frescos.</li>
+        <li>El martes: dos meseros con uniforme limpio y tres o cuatro personas que acepten salir a cuadro como comensales.</li>
+      </ul></div>
+      <div><h3>Viernes y sábado, de noche</h3><ul>
+        <li>Hora exacta en que empieza a tocar el grupo o la banda.</li>
+        <li>Aviso en la entrada de que se está grabando para redes.</li>
+        <li>Una mesa reservada cerca de la pista para el equipo.</li>
+        <li>Luces de pista y del local encendidas como en una noche normal.</li>
+        <li>El encargado de turno avisado, para grabar platillos y bebidas cuando salen a las mesas.</li>
+      </ul></div>
+      <div><h3>Platillos propuestos</h3><ul>
+        <li>Pulpo tatemado, jaibas al gusto, camarones al coco y camarones envueltos con tocino.</li>
+        <li>Arroz a la tumbada Happy, cazuela de mariscos y ceviche caribeño Happy.</li>
+        <li>Aguachile de camarón, tostada de atún y taco gobernador.</li>
+        <li>Balazo de ostión y un platillo del menú infantil.</li>
+        <li>Bebidas: michelada, cubetazo, mezcalita y carajillo.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Para que no haya sorpresas</span><h2>Lo que no está incluido</h2></div>
+    <ul>
+      <li><b>Presupuesto de anuncios.</b> Se paga directo a Meta; sugerimos $100 diarios.</li>
+      <li><b>Insumos</b> de los platillos y bebidas que se preparan para grabar.</li>
+      <li><b>Impresiones.</b> Entregamos el diseño listo (código QR, carteles); la imprenta corre por cuenta del restaurante.</li>
+      <li><b>Pagos a terceros</b>, como músicos o creadores de contenido invitados.</li>
+    </ul>
+    <div class="callout">
+      <p><b>Sesiones extra: $1,000 por hora de grabación.</b> Solo aplican si se pide material que no está en este plan, como una promoción o un platillo nuevo que no pueda esperar a la siguiente sesión programada. Las sesiones de los meses 2 y 3 ya contemplan platillos y promociones nuevas, así que basta con avisarnos antes de cada visita para incluirlos sin costo.</p>
+    </div>
+    <p class="small">Cada pieza incluye una ronda de ajustes antes de publicarse. Todos los precios de esta propuesta, incluidas las sesiones extra y la administración permanente, son más IVA en caso de requerir factura.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Después de los 90 días</span><h2>Administración permanente</h2></div>
+    <div class="month">
+      <div class="top"><h3>A partir del 17 de enero de 2027</h3><div class="price">$10,000 <small>al mes</small></div><span class="split">Se mantiene el precio propuesto de $10,000; el precio normal es de $14,000.</span></div>
+      <ul>
+        <li>Dos visitas de grabación programadas al mes: una de día para platillos y promociones, y una de noche.</li>
+        <li>Calendario mensual, diseño y publicación en Facebook e Instagram, con los videos también en TikTok.</li>
+        <li>Administración de Google Business y respuesta a reseñas y comentarios.</li>
+        <li>Actualización de promociones, eventos, horarios y menú en todos los perfiles.</li>
+        <li>Soporte al equipo para el manejo de WhatsApp Business.</li>
+        <li>Seguimiento de anuncios y reporte mensual. El presupuesto de anuncios sigue aparte.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <span class="script">lo hace rico</span>
+    <span class="meta">Rodrigo Madera · Propuesta para Happy Jaiba Restaurante, Cancún</span>
+  </footer>
+
+</div>
+</body>
+</html>
