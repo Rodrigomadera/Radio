@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Happy Jaiba · Propuesta de identidad para redes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dosis:wght@500;700;800&family=Kaushan+Script&family=Nunito:wght@400;600;700&family=Righteous&display=swap">
+<style>
+html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}
+/* Layout: tablero de marca en una columna; cada bloque muestra piezas reales a escala (reels 9:16, posts 4:5) */
+:root{
+  /* marca: constantes, salen del logo */
+  --navy:#25235C; --teal:#00A093; --fucsia:#D4004C; --ciruela:#9A1B57; --ambar:#F6B21B; --espuma:#FFF8EC;
+  /* página */
+  --bg:#FFF8EC; --fg:#25235C; --surface:#FFFFFF; --muted:#5D5B86; --line:#E7DCC6; --accent:#D4004C;
+  --display:"Righteous","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  --caps:"Dosis","Arial Narrow",sans-serif;
+  --script:"Kaushan Script","Brush Script MT",cursive;
+  --body:"Nunito","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#14133A; --fg:#F6F0E4; --surface:#1F1E4F; --muted:#B9B6D6; --line:#34326B; --accent:#FF4F86; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#14133A; --fg:#F6F0E4; --surface:#1F1E4F; --muted:#B9B6D6; --line:#34326B; --accent:#FF4F86; color-scheme:dark }
+
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:32px 64px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3,p{margin:0}
+h1{font-family:var(--display);font-size:clamp(30px,5vw,46px);line-height:1.05;font-weight:400;text-wrap:balance}
+h2{font-family:var(--display);font-size:clamp(22px,3.4vw,30px);font-weight:400;line-height:1.1;text-wrap:balance}
+.eyebrow{font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--teal)}
+.lead{max-width:62ch;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:20px}
+.head{display:flex;flex-direction:column;gap:6px}
+.note{font-size:14px;color:var(--muted);max-width:68ch}
+
+/* portada */
+.cover{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center}
+.logo-card{background:#fff;border-radius:28px;padding:14px;aspect-ratio:1;display:grid;place-items:center;max-width:100%}
+.logo-card img{width:100%;height:100%;object-fit:contain}
+.cover .txt{display:flex;flex-direction:column;gap:12px;min-width:0}
+.cover .script{font-family:var(--script);font-size:26px;color:var(--accent);transform:rotate(-3deg);transform-origin:left}
+
+/* colores */
+.swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.sw{display:flex;flex-direction:column;gap:8px;min-width:0}
+.sw i{display:block;aspect-ratio:4/3;border-radius:16px;border:1px solid var(--line)}
+.sw b{font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:14px}
+.sw span{font-size:13px;color:var(--muted)}
+.sw code{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted)}
+
+/* tipografía */
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.type{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.type .s{line-height:1;overflow-wrap:anywhere}
+.type small{font-size:13px;color:var(--muted)}
+.t1 .s{font-family:var(--display);font-size:34px}
+.t2 .s{font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:26px;color:var(--teal)}
+.t3 .s{font-family:var(--script);font-size:34px;color:var(--accent)}
+
+/* piezas */
+.row{display:flex;flex-wrap:wrap;gap:24px;justify-content:flex-start}
+.piece{display:flex;flex-direction:column;gap:10px;min-width:0}
+.piece figcaption{font-size:13px;color:var(--muted);max-width:260px}
+.piece figcaption b{display:block;font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:14px;color:var(--fg)}
+figure{margin:0}
+
+.phone{width:min(100%,250px);aspect-ratio:9/16;border-radius:26px;overflow:hidden;position:relative;container-type:inline-size;background:var(--navy);color:#fff;border:5px solid #0c0b26}
+.post{width:min(100%,300px);aspect-ratio:4/5;border-radius:10px;overflow:hidden;position:relative;container-type:inline-size;background:var(--navy);color:#fff}
+.phone>*,.post>*{position:absolute}
+.photo{inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
+.shade{inset:0;background:linear-gradient(180deg,rgba(20,19,58,.15) 0%,rgba(20,19,58,0) 35%,rgba(20,19,58,.82) 100%)}
+.badge{background:#fff;border-radius:50%;display:grid;place-items:center;overflow:hidden}
+.badge img{width:82%;height:82%;object-fit:contain}
+.pill{font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.1em;border-radius:99px;white-space:nowrap}
+.burst{inset:-40%;background:repeating-conic-gradient(from 0deg,rgba(0,160,147,.38) 0 10deg,transparent 10deg 20deg);animation:spin 40s linear infinite}
+.wave{left:0;right:0;width:100%;display:block}
+
+/* reel 1: platillo */
+.r1 .badge{top:4%;right:5%;width:25cqw;height:25cqw}
+.r1 .tag{left:0;bottom:31%;background:var(--teal);font-size:4.6cqw;padding:1.6cqw 4cqw 1.6cqw 6cqw;border-radius:0 99px 99px 0;animation:inL 7s cubic-bezier(.2,.8,.2,1) infinite both}
+.r1 .name{left:0;bottom:17%;background:var(--fucsia);font-family:var(--display);font-size:11cqw;line-height:1;padding:3cqw 7cqw 3.4cqw 6cqw;border-radius:0 5cqw 5cqw 0;animation:wipe 7s cubic-bezier(.2,.8,.2,1) infinite both}
+.r1 .rico{right:6%;bottom:9.5%;font-family:var(--script);font-size:8.5cqw;color:var(--ambar);--r:-7deg;transform:rotate(-7deg);animation:pop 7s ease-out infinite both}
+.r1 .foot{left:6%;bottom:4%;font-family:var(--caps);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:3.6cqw;opacity:.9}
+
+/* reel 2: evento */
+.r2{background:var(--navy)}
+.r2 .col{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2cqw;text-align:center;padding:8cqw}
+.r2 .dia{font-family:var(--script);font-size:17cqw;color:var(--ambar);line-height:1;--r:-5deg;transform:rotate(-5deg);animation:drop 7s cubic-bezier(.2,.8,.2,1) infinite both}
+.r2 .big{font-family:var(--display);font-size:24cqw;line-height:.9;animation:zoom 7s cubic-bezier(.2,.8,.2,1) infinite both}
+.r2 .big em{font-style:normal;display:block;font-size:9cqw;font-family:var(--caps);font-weight:800;letter-spacing:.3em;color:var(--teal);margin-bottom:1cqw}
+.r2 .pill{background:var(--fucsia);font-size:4.6cqw;padding:2cqw 5cqw;margin-top:4cqw;animation:rise 7s ease-out infinite both}
+.r2 .mark{top:3%;left:50%;margin-left:-15cqw;width:30cqw}
+.r2 .foot{left:0;right:0;bottom:0;background:var(--teal);font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:3.8cqw;text-align:center;padding:3cqw 2cqw}
+
+/* reel 3: cierre */
+.r3{background:var(--espuma);color:var(--navy)}
+.r3 .col{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4cqw;padding:8cqw;text-align:center}
+.r3 .big-logo{width:66cqw;animation:zoom 7s cubic-bezier(.2,.8,.2,1) infinite both}
+.r3 .pill{background:var(--navy);color:#fff;font-size:4.4cqw;padding:2.2cqw 5cqw;animation:rise 7s ease-out infinite both}
+.r3 .redes{font-family:var(--caps);font-weight:700;font-size:4.2cqw;line-height:1.5;animation:rise 7s ease-out infinite both;animation-delay:.25s}
+.r3 .wave{bottom:0}
+
+/* posts */
+.p1 .panel{left:0;right:0;bottom:0;background:var(--fucsia);padding:5cqw 6cqw 5cqw;display:flex;flex-direction:column;gap:1cqw}
+.p1 .wave{bottom:calc(100% - 1px)}
+.p1 .k{font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:3.6cqw;color:var(--ambar)}
+.p1 .n{font-family:var(--display);font-size:9.5cqw;line-height:1}
+.p1 .d{font-size:3.6cqw;line-height:1.35;opacity:.95}
+
+.p2{background:var(--ambar);color:var(--navy)}
+.p2 .circle{top:-12%;right:-16%;width:86cqw;height:86cqw;border-radius:50%;overflow:hidden;border:2cqw solid #fff}
+.p2 .circle img{width:100%;height:100%;object-fit:cover;object-position:60% 35%;max-width:none}
+.p2 .mark{top:4%;left:5%;width:25cqw}
+.p2 .txt{left:6%;right:6%;bottom:6%;display:flex;flex-direction:column;gap:1.5cqw;align-items:flex-start}
+.p2 .s{font-family:var(--script);font-size:8cqw;color:var(--fucsia);transform:rotate(-4deg);transform-origin:left;line-height:1}
+.p2 .n{font-family:var(--display);font-size:13cqw;line-height:.95}
+.p2 .pill{background:var(--navy);color:#fff;font-size:3.6cqw;padding:1.8cqw 4.5cqw;margin-top:1.5cqw}
+
+.p3{background:var(--navy)}
+.p3 .col{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.5cqw;padding:8cqw}
+.p3 .dia{font-family:var(--script);font-size:13cqw;color:var(--ambar);transform:rotate(-5deg);line-height:1}
+.p3 .big{font-family:var(--display);font-size:15cqw;line-height:.92}
+.p3 .pill{background:var(--fucsia);font-size:3.8cqw;padding:1.8cqw 5cqw;margin-top:3cqw}
+.p3 .foot{left:0;right:0;bottom:0;background:var(--teal);font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:3.3cqw;text-align:center;padding:2.6cqw}
+.p3 .mark{top:4%;left:5%;width:20cqw}
+
+.p4{background:var(--espuma);color:var(--navy)}
+.p4 .col{inset:0;display:flex;flex-direction:column;justify-content:center;gap:3cqw;padding:9cqw 9cqw 20cqw}
+.p4 .stars{color:var(--ambar);font-size:8cqw;letter-spacing:.1em;line-height:1}
+.p4 .q{font-family:var(--display);font-size:8.4cqw;line-height:1.1}
+.p4 .who{font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:3.6cqw;color:var(--teal)}
+.p4 .wave{bottom:0}
+.p4 .mark{right:6%;top:4%;width:18cqw}
+
+/* carrusel */
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}
+.carousel .post{flex:0 0 auto;width:min(74vw,270px);scroll-snap-align:start}
+.carousel .panel{background:var(--pc,var(--fucsia))}
+.carousel .wave path{fill:var(--pc,var(--fucsia))}
+.num{top:4%;right:5%;font-family:var(--caps);font-weight:800;font-size:3.6cqw;letter-spacing:.1em;background:rgba(20,19,58,.7);color:#fff;padding:1cqw 3.2cqw;border-radius:99px}
+.ph{inset:0;background:repeating-linear-gradient(45deg,#2F2D70 0 14px,#25235C 14px 28px);display:grid;place-items:start center;padding-top:34%;font-family:var(--caps);font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:3.6cqw;color:#C9C7E6;text-align:center}
+.c0{background:var(--espuma);color:var(--navy)}
+.c0 .mark{top:5%;left:6%;width:30cqw}
+.c0 .txt{left:7%;right:7%;bottom:17%;display:flex;flex-direction:column;gap:1cqw;align-items:flex-start}
+.c0 .s{font-family:var(--script);font-size:9cqw;color:var(--fucsia);transform:rotate(-4deg);transform-origin:left;line-height:1}
+.c0 .n{font-family:var(--display);font-size:12.5cqw;line-height:.95}
+.c0 .pill{background:var(--fucsia);color:#fff;font-size:3.8cqw;padding:1.8cqw 5cqw;margin-top:2.5cqw}
+.c0 .wave{bottom:0}
+.c4 .col img{width:44cqw}
+
+/* semana */
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.day{border-radius:14px;padding:12px 10px;display:flex;flex-direction:column;gap:4px;min-width:0;color:#fff}
+.day b{font-family:var(--caps);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:13px}
+.day span{font-size:13px;line-height:1.3}
+.d-f{background:var(--teal)} .d-e{background:var(--navy);border:1px solid var(--line)} .d-p{background:var(--fucsia)} .d-a{background:var(--ambar);color:var(--navy)}
+
+.todo{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:68ch}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes inL{0%,8%{transform:translateX(-110%)}16%,86%{transform:none}94%,100%{transform:translateX(-110%)}}
+@keyframes wipe{0%,14%{clip-path:inset(0 100% 0 0)}26%,86%{clip-path:inset(0 0 0 0)}94%,100%{clip-path:inset(0 100% 0 0)}}
+@keyframes pop{0%,28%{transform:rotate(var(--r,0deg)) scale(0)}35%{transform:rotate(var(--r,0deg)) scale(1.2)}40%,86%{transform:rotate(var(--r,0deg)) scale(1)}92%,100%{transform:rotate(var(--r,0deg)) scale(0)}}
+@keyframes drop{0%,6%{transform:translateY(-300%) rotate(var(--r,0deg));opacity:0}16%{transform:translateY(8%) rotate(var(--r,0deg));opacity:1}20%,86%{transform:rotate(var(--r,0deg));opacity:1}94%,100%{transform:translateY(-300%) rotate(var(--r,0deg));opacity:0}}
+@keyframes zoom{0%,14%{transform:scale(0);opacity:0}24%{transform:scale(1.12);opacity:1}29%,86%{transform:scale(1);opacity:1}94%,100%{transform:scale(0);opacity:0}}
+@keyframes rise{0%,30%{transform:translateY(120%);opacity:0}40%,86%{transform:none;opacity:1}94%,100%{transform:translateY(120%);opacity:0}}
+@media (prefers-reduced-motion: reduce){.phone *,.post *{animation:none!important}}
+
+@media (max-width:720px){
+  .cover{grid-template-columns:1fr}.logo-card{width:170px}
+  .swatches{grid-template-columns:repeat(2,1fr)}
+  .types{grid-template-columns:1fr}
+  .week{grid-template-columns:repeat(2,1fr)}
+  .row{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="cover">
+    <div class="logo-card"><img src="logo.png" alt="Logo de Happy Jaiba Restaurante"></div>
+    <div class="txt">
+      <span class="eyebrow">Propuesta de identidad para redes · 90 días</span>
+      <h1>Así se verán los videos y las publicaciones de Happy Jaiba</h1>
+      <p class="lead">Todo sale del logo: sus colores, sus letras y la jaiba. La idea es que cualquier publicación se reconozca como de Happy Jaiba aunque no se vea el nombre.</p>
+      <span class="script">lo hace rico</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="head"><span class="eyebrow">Colores</span><h2>La paleta del logo, con un uso para cada color</h2></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:var(--navy)"></i><b>Azul marino</b><span>Fondos de eventos y texto</span><code>#25235C</code></div>
+      <div class="sw"><i style="background:var(--teal)"></i><b>Turquesa</b><span>Etiquetas y franjas de datos</span><code>#00A093</code></div>
+      <div class="sw"><i style="background:var(--fucsia)"></i><b>Fucsia jaiba</b><span>Nombre del platillo y llamados</span><code>#D4004C</code></div>
+      <div class="sw"><i style="background:var(--ambar)"></i><b>Ámbar cerveza</b><span>Promociones y acentos</span><code>#F6B21B</code></div>
+      <div class="sw"><i style="background:var(--espuma)"></i><b>Espuma</b><span>Fondos claros y reseñas</span><code>#FFF8EC</code></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Tipografía</span><h2>Tres letras, cada una con su papel</h2></div>
+    <div class="types">
+      <div class="type t1"><div class="s">Pulpo tatemado</div><small><b>Righteous</b> para títulos: nombres de platillos y de las noches. Se parece al trazo grueso de “Jaiba”.</small></div>
+      <div class="type t2"><div class="s">Música en vivo</div><small><b>Dosis</b> en mayúsculas para datos: día, hora, dirección. Se parece a “Happy” y “Restaurante”.</small></div>
+      <div class="type t3"><div class="s">lo hace rico</div><small><b>Kaushan Script</b> para el toque a mano: el lema y los días de la semana.</small></div>
+    </div>
+    <p class="note">Son las equivalentes libres más cercanas a las letras del logo. Si la propietaria tiene los archivos originales del diseñador, se usan esas.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Video</span><h2>Los gráficos animados de cada reel</h2>
+      <p class="lead">Estas tres pantallas se mueven en bucle para mostrar cómo entra y sale cada elemento sobre el video.</p></div>
+    <div class="row">
+      <figure class="piece">
+        <div class="phone r1">
+          <img class="photo" src="pulpo.jpg" alt="Pulpo tatemado servido en espada">
+          <div class="shade"></div>
+          <div class="badge"><img src="logo.png" alt=""></div>
+          <div class="tag pill">Especialidad de la casa</div>
+          <div class="name">Pulpo tatemado</div>
+          <div class="rico">lo hace rico</div>
+          <div class="foot">Av. Lakin · Paseos del Mar</div>
+        </div>
+        <figcaption><b>Reel de platillo</b>Entra la etiqueta, se despliega el nombre y aparece el lema. El logo se queda fijo en la esquina.</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <div class="phone r2">
+          <div class="burst"></div>
+          <img class="mark" src="logo-blanco.png" alt="">
+          <div class="col">
+            <div class="dia">Viernes</div>
+            <div class="big"><em>de</em>Salsa</div>
+            <div class="pill">Música en vivo · DJ</div>
+          </div>
+          <div class="foot">Av. Lakin · Paseos del Mar</div>
+        </div>
+        <figcaption><b>Entrada de noche temática</b>Abre el video del evento durante 2 o 3 segundos y luego da paso a las tomas del grupo y la pista de baile. Misma plantilla para Chavorucos y Banda.</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <div class="phone r3">
+          <div class="col">
+            <img class="big-logo" src="logo.png" alt="Happy Jaiba">
+            <div class="pill">Reserva tu mesa</div>
+            <div class="redes">happyjaiba.com.mx<br>@happyjaibacun</div>
+          </div>
+          <svg class="wave" viewBox="0 0 100 12" preserveAspectRatio="none" style="height:8%"><path fill="#00A093" d="M0 6 Q12.5 0 25 6 T50 6 T75 6 T100 6 V12 H0Z"/></svg>
+        </div>
+        <figcaption><b>Cierre</b>Los últimos 2 segundos de todos los videos: logo, llamado a reservar y dónde encontrarlos.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Fotos</span><h2>Las cuatro plantillas de publicación</h2>
+      <p class="lead">Con estas cuatro se cubre la publicación diaria. La foto del pulpo es la que nos compartieron; los textos de promoción y reseña son de ejemplo.</p></div>
+    <div class="row">
+      <figure class="piece">
+        <div class="post p1">
+          <img class="photo" src="pulpo.jpg" alt="Pulpo tatemado servido en espada">
+          <div class="panel">
+            <svg class="wave" viewBox="0 0 100 12" preserveAspectRatio="none" style="height:5cqw"><path fill="#D4004C" d="M0 6 Q12.5 0 25 6 T50 6 T75 6 T100 6 V12 H0Z"/></svg>
+            <span class="k">Especialidades</span>
+            <span class="n">Pulpo tatemado</span>
+            <span class="d">A las brasas y servido en espada. Para compartir en la mesa.</span>
+          </div>
+        </div>
+        <figcaption><b>Platillo del menú</b>La foto manda; el nombre va en la franja fucsia con el borde de ola.</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <div class="post p2">
+          <div class="circle"><img src="pulpo.jpg" alt=""></div>
+          <img class="mark" src="logo.png" alt="">
+          <div class="txt">
+            <span class="s">esta semana</span>
+            <span class="n">Promo<br>del pulpo</span>
+            <span class="pill">Aquí va la promoción</span>
+          </div>
+        </div>
+        <figcaption><b>Promoción</b>Fondo ámbar para que se distinga de inmediato en el muro. El texto se llena con las promociones que confirme la propietaria.</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <div class="post p3">
+          <div class="burst"></div>
+          <img class="mark" src="logo-blanco.png" alt="">
+          <div class="col">
+            <div class="dia">Jueves de</div>
+            <div class="big">Chavo&shy;rucos</div>
+            <div class="pill">Hoy · DJ en cabina</div>
+          </div>
+          <div class="foot">Av. Lakin · Paseos del Mar</div>
+        </div>
+        <figcaption><b>Aviso de evento</b>El cartel del día. Cambia el nombre de la noche y el dato de la música.</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <div class="post p4">
+          <div class="col">
+            <div class="stars">★★★★★</div>
+            <div class="q">“Excelente atención, buena música y mariscos fresquísimos.”</div>
+            <div class="who">Reseña de ejemplo · Google</div>
+          </div>
+          <svg class="wave" viewBox="0 0 100 12" preserveAspectRatio="none" style="height:14%"><path fill="#00A093" d="M0 6 Q12.5 0 25 6 T50 6 T75 6 T100 6 V12 H0Z"/></svg>
+          <img class="mark" src="logo.png" alt="">
+        </div>
+        <figcaption><b>Reseña de cliente</b>Para los domingos. Se usa una reseña real con el nombre de quien la escribió.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Carrusel</span><h2>Varias fotos en una sola publicación</h2>
+      <p class="lead">Sirve para recorrer una sección del menú o las promociones de la semana. Desliza hacia la izquierda para ver las cinco láminas; los textos de cada platillo son de ejemplo.</p></div>
+    <div class="carousel">
+      <div class="post c0">
+        <img class="mark" src="logo.png" alt="Happy Jaiba">
+        <span class="num">1 / 5</span>
+        <div class="txt">
+          <span class="s">las</span>
+          <span class="n">Especiali&shy;dades de la casa</span>
+          <span class="pill">Desliza →</span>
+        </div>
+        <svg class="wave" viewBox="0 0 100 12" preserveAspectRatio="none" style="height:10%"><path style="fill:#00A093" d="M0 6 Q12.5 0 25 6 T50 6 T75 6 T100 6 V12 H0Z"/></svg>
+      </div>
+
+      <div class="post p1">
+        <img class="photo" src="pulpo.jpg" alt="Pulpo tatemado servido en espada">
+        <span class="num">2 / 5</span>
+        <div class="panel">
+          <svg class="wave" viewBox="0 0 100 12" preserveAspectRatio="none" style="height:5cqw"><path d="M0 6 Q12.5 0 25 6 T50 6 T75 6 T100 6 V12 H0Z"/></svg>
+          <span class="k">Especialidades</span>
+          <span class="n">Pulpo tatemado</span>
+          <span class="d">A las brasas y servido en espada.</span>
+        </div>
+      </div>
+
+      <div class="post p1" style="--pc:var(--ciruela)">
+        <div class="ph">Foto pendiente<br>se toma el lunes</div>
+        <span class="num">3 / 5</span>
+        <div class="panel">
+          <svg class="wave" viewBox="0 0 100 12" preserveAspectRatio="none" style="height:5cqw"><path d="M0 6 Q12.5 0 25 6 T50 6 T75 6 T100 6 V12 H0Z"/></svg>
+          <span class="k">Especialidades</span>
+          <span class="n">Jaibas al gusto</span>
+          <span class="d">Pídelas como más te gusten.</span>
+        </div>
+      </div>
+
+      <div class="post p1" style="--pc:var(--navy)">
+        <div class="ph">Foto pendiente<br>se toma el lunes</div>
+        <span class="num">4 / 5</span>
+        <div class="panel">
+          <svg class="wave" viewBox="0 0 100 12" preserveAspectRatio="none" style="height:5cqw"><path d="M0 6 Q12.5 0 25 6 T50 6 T75 6 T100 6 V12 H0Z"/></svg>
+          <span class="k">Especialidades</span>
+          <span class="n">Camarones al coco</span>
+          <span class="d">Crujientes, con el toque dulce del coco.</span>
+        </div>
+      </div>
+
+      <div class="post p3 c4">
+        <div class="burst"></div>
+        <span class="num">5 / 5</span>
+        <div class="col">
+          <img src="logo-blanco.png" alt="Happy Jaiba">
+          <div class="pill">Reserva tu mesa</div>
+        </div>
+        <div class="foot">Av. Lakin · Paseos del Mar</div>
+      </div>
+    </div>
+    <p class="note">La primera lámina engancha, las de en medio muestran un platillo cada una y la última siempre cierra con el logo y el llamado a reservar.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">La semana</span><h2>Cómo se combina en el muro</h2></div>
+    <div class="week">
+      <div class="day d-f"><b>Lunes</b><span>Platillo del menú</span></div>
+      <div class="day d-f"><b>Martes</b><span>Reel de platillo</span></div>
+      <div class="day d-e"><b>Miércoles</b><span>Video: mañana Chavorucos</span></div>
+      <div class="day d-e"><b>Jueves</b><span>Cartel de Chavorucos</span></div>
+      <div class="day d-e"><b>Viernes</b><span>Video de Salsa</span></div>
+      <div class="day d-e"><b>Sábado</b><span>Video de Banda</span></div>
+      <div class="day d-a"><b>Domingo</b><span>Reseña o promoción</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Para afinar</span><h2>Lo que falta por recibir</h2></div>
+    <ul class="todo">
+      <li>Las fotos de platillos sin el logo incrustado, para colocarlo limpio en cada pieza.</li>
+      <li>Las promociones de cada noche, con precios y horarios.</li>
+      <li>Los nombres del grupo de salsa y de la banda, para ponerlos en los carteles.</li>
+    </ul>
+  </section>
+
+</div>
+</body>
+</html>
