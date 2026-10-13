@@ -69,6 +69,41 @@
   .vol{flex:0 0 auto;width:96px;accent-color:var(--rojo);cursor:pointer}
   @media (max-width:620px){.vol{display:none}.marca{font-size:12px}}
 
+  .sel-ciudad{appearance:none;-webkit-appearance:none;background:transparent;border:none;color:var(--hueso);
+       font:700 13px var(--texto);letter-spacing:.02em;padding:0 16px 0 0;cursor:pointer;max-width:100%;
+       background-image:linear-gradient(45deg,transparent 50%,var(--gris) 50%),linear-gradient(135deg,var(--gris) 50%,transparent 50%);
+       background-position:calc(100% - 6px) 55%,calc(100% - 1px) 55%;background-size:5px 5px;background-repeat:no-repeat}
+  .play svg[hidden]{display:none}
+  .vivo .sel-ciudad{align-self:flex-start}
+  .sel-ciudad option{background:var(--humo);color:var(--hueso)}
+
+  /* ---------- en vivo (portada) ---------- */
+  .envivo{margin-top:28px;max-width:460px;background:var(--humo);border:1px solid var(--borde);
+          border-radius:16px;padding:20px 20px 22px;position:relative;overflow:hidden}
+  .envivo::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--rojo)}
+  .envivo-cab{display:flex;align-items:center;gap:8px;margin:0 0 14px;font-size:11px;font-weight:700;
+              letter-spacing:.2em;text-transform:uppercase;color:var(--gris-claro)}
+  .envivo-cab .punto{background:var(--rojo)}
+  .envivo.sonando .envivo-cab .punto{animation:latido 1.6s ease-in-out infinite}
+  .ciudades{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+  .ciudades button{font:700 12.5px var(--texto);letter-spacing:.02em;color:var(--gris-claro);cursor:pointer;
+                   background:transparent;border:1px solid var(--borde);border-radius:999px;padding:8px 13px;
+                   transition:background .15s ease,color .15s ease,border-color .15s ease}
+  .ciudades button:hover{color:var(--hueso);border-color:var(--gris)}
+  .ciudades button[aria-pressed="true"]{background:var(--hueso);color:var(--cabina);border-color:var(--hueso)}
+  .ciudades small{font-weight:400;opacity:.7;margin-left:5px}
+  .envivo-fila{display:flex;align-items:center;gap:16px}
+  .play-g{width:68px;height:68px;box-shadow:0 0 0 6px rgba(229,52,43,.16)}
+  .play-g svg{width:26px;height:26px}
+  .envivo-txt{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .envivo-txt b{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.02em;line-height:1.2}
+  .envivo-txt span{font-size:13.5px;color:var(--gris-claro)}
+  .proximo{margin:18px 0 0;font-size:13.5px;color:var(--gris-claro);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+  .proximo b{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gris)}
+  .proximo.aire b{color:var(--ambar)}
+  .proximo.aire span{color:var(--hueso);font-weight:700}
+  .proximo + .horario{margin-top:14px}
+
   /* ---------- portada ---------- */
   .hero{display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--borde);
         background:var(--cabina)}
@@ -262,7 +297,7 @@
       <svg id="ico-pause" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
     </button>
     <div class="vivo" id="vivo">
-      <b id="vivo-txt">Radio en vivo</b>
+      <select class="sel-ciudad" id="sel-ciudad" aria-label="Estación"></select>
       <span class="estado"><i class="punto"></i><span id="vivo-est">Detenido</span></span>
     </div>
     <label class="vol" aria-label="Volumen">
@@ -279,7 +314,21 @@
     <p class="eyebrow" style="margin:0 0 18px">Locutor</p>
     <h1>Rodrigo<br>Madera</h1>
     <p class="lema">Locución irreverente y sin guión.</p>
-    <p class="ahora">Ahora al aire por Impulso FM 107.3</p>
+    <div class="envivo" id="envivo">
+      <p class="envivo-cab"><i class="punto"></i><span>En vivo · Impulso FM</span></p>
+      <div class="ciudades" id="ciudades" role="group" aria-label="Elige tu ciudad"></div>
+      <div class="envivo-fila">
+        <button class="play play-g" id="btn-play-g" aria-label="Reproducir la estación en vivo">
+          <svg class="ico-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="ico-pause" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+        </button>
+        <div class="envivo-txt">
+          <b id="envivo-tit">Escucha Chetumal</b>
+          <span id="envivo-sub">Señal en vivo</span>
+        </div>
+      </div>
+    </div>
+    <p class="proximo"><b id="proximo-rot">Próximo programa</b><span id="envivo-prog"></span></p>
     <div class="horario">
       <span class="chip">Jue · Hypeando</span>
       <span class="chip">Vie · Crónicas Migajeras</span>
@@ -397,8 +446,18 @@
    Deja en "" lo que todavía no tengas: el botón se ve apagado y no estorba.
    ========================================================================= */
 var CONFIG = {
-  stream: "https://usa3.lhdserver.es:8333/stream",
-  estacion: "Impulso FM 107.3",
+  estacion: "Impulso FM",
+  estaciones: [
+    { id: "chetumal", nombre: "Chetumal", frec: "107.3", stream: "https://usa3.lhdserver.es:8333/stream" },
+    { id: "cancun", nombre: "Cancún", frec: "", stream: "https://usa3.lhdserver.es:8327/stream" },
+    { id: "playa", nombre: "Playa del Carmen", corto: "Playa", frec: "", stream: "https://usa3.lhdserver.es:8335/stream" }
+  ],
+  // Programas al aire: día de la semana (0 = domingo) y hora de Quintana Roo.
+  alAire: [
+    { dia: 4, hora: 20, nombre: "Hypeando" },
+    { dia: 5, hora: 20, nombre: "Crónicas Migajeras" },
+    { dia: 6, hora: 20, nombre: "Sábado de Rush" }
+  ],
 
   // Código de GoatCounter, el contador de visitas. Es la primera parte de la
   // dirección de tu panel: si es rodrigomadera.goatcounter.com, aquí va
@@ -795,25 +854,95 @@ var CONFIG = {
   var vivo = document.getElementById("vivo");
   var vol = document.getElementById("vol");
 
-  document.getElementById("vivo-txt").textContent = CONFIG.estacion + " · en vivo";
+  var sel = document.getElementById("sel-ciudad");
+  var caja = document.getElementById("envivo");
+  var botones = document.getElementById("ciudades");
+  var btnG = document.getElementById("btn-play-g");
+  var tit = document.getElementById("envivo-tit");
+  var actualEst = CONFIG.estaciones[0];
+  try {
+    var guardada = localStorage.getItem("ciudad");
+    CONFIG.estaciones.forEach(function (e) { if (e.id === guardada) actualEst = e; });
+  } catch (e) {}
+
+  CONFIG.estaciones.forEach(function (e) {
+    var o = document.createElement("option");
+    o.value = e.id; o.textContent = "Impulso " + e.nombre; sel.appendChild(o);
+    var b = document.createElement("button");
+    b.type = "button"; b.dataset.c = e.id; b.textContent = e.nombre;
+    if (e.frec) { var s = document.createElement("small"); s.textContent = e.frec; b.appendChild(s); }
+    b.addEventListener("click", function () { ciudad(e.id); });
+    botones.appendChild(b);
+  });
+
+  function pintarCiudad() {
+    sel.value = actualEst.id;
+    tit.textContent = "Escucha " + (actualEst.corto || actualEst.nombre);
+    Array.prototype.forEach.call(botones.children, function (b) {
+      b.setAttribute("aria-pressed", b.dataset.c === actualEst.id ? "true" : "false");
+    });
+  }
+  function ciudad(id) {
+    CONFIG.estaciones.forEach(function (e) { if (e.id === id) actualEst = e; });
+    try { localStorage.setItem("ciudad", actualEst.id); } catch (e) {}
+    pintarCiudad();
+    if (!audio.paused) arrancar();
+  }
+  sel.addEventListener("change", function () { ciudad(sel.value); });
+  pintarCiudad();
+
+  // Línea del programa: "Al aire ahora", "Hoy 8 pm" o el siguiente de la semana.
+  var DIAS = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+  function pintarPrograma() {
+    var el = document.getElementById("envivo-prog");
+    var ahora = new Date(Date.now() - 5 * 3600 * 1000);   // Quintana Roo, UTC-5 todo el año
+    var d = ahora.getUTCDay(), hh = ahora.getUTCHours();
+    var mejor = null, falta = 99;
+    CONFIG.alAire.forEach(function (p) {
+      var dias = (p.dia - d + 7) % 7;
+      if (dias === 0 && hh >= p.hora + 1) dias = 7;
+      if (dias < falta) { falta = dias; mejor = p; }
+    });
+    if (!mejor) { el.textContent = ""; return; }
+    var hora = (mejor.hora > 12 ? mejor.hora - 12 : mejor.hora) + (mejor.hora >= 12 ? " pm" : " am");
+    var alAire = falta === 0 && hh === mejor.hora;
+    el.parentNode.classList.toggle("aire", alAire);
+    document.getElementById("proximo-rot").textContent = alAire ? "Al aire ahora" : "Próximo programa";
+    el.textContent = alAire ? mejor.nombre + " · con Rodrigo Madera"
+      : (falta === 0 ? "Hoy " : falta === 1 ? "Mañana " : DIAS[mejor.dia] + " ") + hora + " · " + mejor.nombre;
+  }
+  pintarPrograma();
+  setInterval(pintarPrograma, 60000);
 
   function estado(txt, sonando) {
     est.textContent = txt;
     vivo.classList.toggle("sonando", !!sonando);
     icoPlay.hidden = !!sonando;
     icoPause.hidden = !sonando;
-    btn.setAttribute("aria-label", sonando ? "Detener la estación" : "Reproducir la estación en vivo");
+    btnG.querySelector(".ico-play").hidden = !!sonando;
+    btnG.querySelector(".ico-pause").hidden = !sonando;
+    caja.classList.toggle("sonando", !!sonando);
+    document.getElementById("envivo-sub").textContent = txt === "Detenido" ? "Señal en vivo" : txt;
+    var rotulo = sonando ? "Detener la estación" : "Reproducir la estación en vivo";
+    btn.setAttribute("aria-label", rotulo);
+    btnG.setAttribute("aria-label", rotulo);
   }
 
-  btn.addEventListener("click", function () {
-    if (!audio.paused) { audio.pause(); audio.src = ""; estado("Detenido", false); return; }
+  function arrancar() {
     estado("Conectando", false);
     window.dispatchEvent(new CustomEvent("solo", { detail: "vivo" }));
     // se reasigna en cada arranque para no reanudar un buffer viejo
-    audio.src = CONFIG.stream + (CONFIG.stream.indexOf("?") > -1 ? "&" : "?") + "t=" + Date.now();
+    var url = actualEst.stream;
+    audio.src = url + (url.indexOf("?") > -1 ? "&" : "?") + "t=" + Date.now();
     audio.play().then(function () { estado("Al aire", true); })
       .catch(function () { estado("No se pudo conectar", false); });
-  });
+  }
+  function alternar() {
+    if (!audio.paused) { audio.pause(); audio.src = ""; estado("Detenido", false); return; }
+    arrancar();
+  }
+  btn.addEventListener("click", alternar);
+  btnG.addEventListener("click", alternar);
 
   // un solo audio a la vez: si suena un programa grabado, se corta el en vivo
   window.addEventListener("solo", function (ev) { if (ev.detail !== "vivo" && !audio.paused) { audio.pause(); audio.src = ""; estado("Detenido", false); } });
