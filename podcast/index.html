@@ -145,4 +145,10 @@ fetch('episodios.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{EPS=d.filt
  const i=EPS.findIndex(e=>e.slug+'-'+e.num===id);if(i<0)return;
  preparar(i);const t=+q.get('t');if(t>0){a._resume=t;document.getElementById('nc').textContent='Empieza en el minuto '+fmt(t)}
  const card=document.getElementById('ep-'+id);card.classList.add('foco');card.scrollIntoView({block:'center'})});
-</script></body></html>
+</script><script>
+// Contador de visitas (GoatCounter, sin cookies). Mismo código que en las demás páginas.
+var GOATCOUNTER = "rodrigomaderaradio";
+(function(){var gc=document.createElement("script");gc.async=true;gc.src="https://gc.zgo.at/count.js";
+gc.setAttribute("data-goatcounter","https://"+GOATCOUNTER+".goatcounter.com/count");document.body.appendChild(gc);})();
+</script>
+</body></html>

@@ -59,12 +59,13 @@ botón de WhatsApp, que sí es público a propósito.
 ## Contador de visitas
 
 Usa GoatCounter, que es gratuito y no pone cookies. El código de la cuenta va
-en cuatro lugares, y tiene que ser el mismo en todos:
+en cinco lugares, y tiene que ser el mismo en todos:
 
 - `index.html` → `var GOATCOUNTER`
 - `radio/index.html` → `goatcounter:` dentro de `CONFIG`
 - `socials/index.html` → `var GOATCOUNTER`
 - `admin/index.html` → `var GOATCOUNTER`
+- `podcast/index.html` → `var GOATCOUNTER`
 
 En la configuración de GoatCounter hay que activar
 "Allow adding visitor counts to your website" para que `/admin/` pueda leer
