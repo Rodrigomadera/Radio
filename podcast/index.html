@@ -59,6 +59,20 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,7vw,72px);lin
 .spoti{display:block;margin-top:12px;font-size:12.5px;color:var(--gris)}.spoti a{color:var(--gris-claro)}
 .toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:var(--hueso);color:var(--cabina);font:600 13px var(--texto);padding:10px 16px;border-radius:99px;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.on{opacity:1}
+.sus{position:relative;overflow:hidden;border:1px solid var(--borde);border-radius:22px;padding:44px;background:radial-gradient(circle at 92% 0%,rgba(229,52,43,.22),transparent 45%),var(--humo)}
+.sus .eti{font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--gris-claro);display:flex;align-items:center;gap:10px;margin:0}
+.sus .eti i{width:9px;height:9px;border-radius:50%;background:var(--rojo,#E5342B);box-shadow:0 0 14px var(--rojo,#E5342B)}
+.sus h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,5vw,44px);letter-spacing:-.04em;line-height:1.05;margin:16px 0 0;max-width:620px}
+.sus .l{color:var(--gris-claro);font-size:17px;line-height:1.5;margin:14px 0 0;max-width:560px}
+.sus .pr{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+.sus .pr span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--a);color:var(--a);border-radius:999px;padding:6px 12px}
+.sus form{display:flex;gap:10px;margin-top:26px;max-width:560px}
+.sus input{flex:1;min-width:0;font:inherit;font-size:16px;color:var(--hueso);background:var(--cabina);border:1px solid var(--borde);border-radius:12px;padding:15px 16px}
+.sus input::placeholder{color:var(--gris)}
+.sus button{font-family:var(--display);font-weight:700;font-size:15px;border:0;border-radius:12px;padding:0 22px;background:var(--hueso);color:var(--cabina);cursor:pointer;white-space:nowrap}
+.sus .fino{font-size:13px;color:var(--gris);margin:12px 0 0}
+@media(max-width:600px){.sus{padding:28px 22px}.sus form{flex-direction:column}.sus button{padding:15px}}
+#suscribete{margin-top:40px}
 </style></head><body>
 <div class="wrap">
   <div class="kicker"><a href="/radio/" style="color:inherit;text-decoration:none">← Radio</a> · Impulso FM 107.3</div>
@@ -72,6 +86,20 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,7vw,72px);lin
   </div>
   <div class="tabs" id="tabs"></div>
   <div id="list"></div>
+  <section id="suscribete" hidden>
+  <div class="sus">
+    <p class="eti"><i></i>Cada semana en tu correo</p>
+    <h2>No te pierdas ningún programa.</h2>
+    <p class="l">Suscríbete y te mando cada episodio en cuanto sale: de qué hablamos, las canciones que sonaron y los enlaces para escucharlo.</p>
+    <div class="pr"><span style="--a:#F5A623">Hypeando</span><span style="--a:#FF3B6B">Crónicas Migajeras</span><span style="--a:#2FE3C8">Sábado de Rush</span></div>
+    <form class="sus-forma">
+      <input type="text" name="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+      <input type="email" name="email" placeholder="tu@correo.com" aria-label="Tu correo" required>
+      <button type="submit">Suscribirme</button>
+    </form>
+    <p class="fino">Un correo por semana, sin spam. Te das de baja con un clic.</p>
+  </div>
+  </section>
 </div>
 <div class="bar"><div class="in">
   <div class="ctr"><button id="b15">↺15</button><button class="big" id="bp">▶</button><button id="f15">15↻</button></div>
@@ -146,6 +174,34 @@ fetch('episodios.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{EPS=d.filt
  preparar(i);const t=+q.get('t');if(t>0){a._resume=t;document.getElementById('nc').textContent='Empieza en el minuto '+fmt(t)}
  const card=document.getElementById('ep-'+id);card.classList.add('foco');card.scrollIntoView({block:'center'})});
 </script><script>
+// Suscripción por correo: el mismo servicio que "suscripcion" en radio/index.html.
+var SUSCRIPCION = "https://suscripcion.rodrigomadera.com";
+function activarSuscripcion(servicio, origen) {
+  // Manda el correo al servicio de suscripción (Cloudflare) y avisa aquí mismo.
+  if (!/^https:\/\//.test(servicio || "")) return;
+  var caja = document.getElementById("suscribete"), forma = caja.querySelector(".sus-forma");
+  var nota = caja.querySelector(".fino"), boton = forma.querySelector("button"), texto = nota.textContent;
+  caja.hidden = false;
+  forma.addEventListener("submit", function (e) {
+    e.preventDefault();
+    boton.disabled = true;
+    fetch(servicio.replace(/\/$/, "") + "/suscribir", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: forma.email.value, web: forma.web.value, origen: origen })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (!d.ok) throw new Error(d.error);
+      forma.reset();
+      nota.textContent = "¡Listo! Ya estás en la lista. Te llega el próximo programa.";
+      nota.style.color = "#2FE3C8";
+    }).catch(function () {
+      nota.textContent = "Revisa tu correo e intenta de nuevo.";
+      nota.style.color = "#FF3B6B";
+      setTimeout(function () { nota.textContent = texto; nota.style.color = ""; }, 4000);
+    }).then(function () { boton.disabled = false; });
+  });
+}
+activarSuscripcion(SUSCRIPCION, "podcast");
 // Contador de visitas (GoatCounter, sin cookies). Mismo código que en las demás páginas.
 var GOATCOUNTER = "rodrigomaderaradio";
 (function(){var gc=document.createElement("script");gc.async=true;gc.src="https://gc.zgo.at/count.js";
