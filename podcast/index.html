@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Podcast · Rodrigo Madera</title>
-<meta name="description" content="Escucha completos Crónicas Migajeras, Hypeando y Sábado de Rush con Rodrigo Madera, de Impulso FM 107.3.">
+<meta name="description" content="Escucha completos Crónicas Migajeras, Hypeando y Sábado de Rush con Rodrigo Madera, de Impulso FM.">
 <link rel="canonical" href="https://rodrigomadera.com/podcast/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2309090B'/%3E%3Crect x='8' y='46' width='48' height='5' rx='2.5' fill='%23E5342B'/%3E%3Ctext x='32' y='38' font-family='Helvetica,Arial,sans-serif' font-size='30' font-weight='700' fill='%23F2EFE9' text-anchor='middle'%3ERM%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Rodrigo Madera"><meta property="og:locale" content="es_MX">
 <meta property="og:url" content="https://rodrigomadera.com/podcast/"><meta property="og:title" content="Podcast · Rodrigo Madera">
-<meta property="og:description" content="Los programas completos de Impulso FM 107.3, cuando quieras.">
+<meta property="og:description" content="Los programas completos de Impulso FM, cuando quieras.">
 <meta property="og:image" content="https://rodrigomadera.com/og.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 <style>
@@ -73,15 +73,30 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,7vw,72px);lin
 .sus .fino{font-size:13px;color:var(--gris);margin:12px 0 0}
 @media(max-width:600px){.sus{padding:28px 22px}.sus form{flex-direction:column}.sus button{padding:15px}}
 #suscribete{margin-top:40px}
+
+  /* Instagram siempre a la mano */
+  .ig-cta{display:inline-flex;align-self:flex-start;align-items:center;gap:9px;margin:16px 0 4px;padding:7px 14px 7px 7px;border-radius:999px;
+    background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888);color:#fff;text-decoration:none;
+    box-shadow:0 8px 24px rgba(220,39,67,.35);transition:transform .15s}
+  .ig-cta:hover{transform:translateY(-2px)}
+  .ig-cta .ig-ico{width:29px;height:29px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;flex:none}
+  .ig-cta svg{width:16px;height:16px}
+  .ig-cta span{display:flex;flex-direction:column;line-height:1.15;text-align:left}
+  .ig-cta b{font-size:11.7px;font-weight:800}
+  .ig-cta small{font-size:9.5px;opacity:.92}
+  .ig-flota{position:fixed;right:16px;bottom:16px;z-index:60;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;color:#fff;
+    background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888);box-shadow:0 8px 24px rgba(0,0,0,.45)}
+  .ig-flota svg{width:28px;height:28px}
 </style></head><body>
 <div class="wrap">
-  <div class="kicker"><a href="/radio/" style="color:inherit;text-decoration:none">← Radio</a> · Impulso FM 107.3</div>
+  <div class="kicker"><a href="/radio/" style="color:inherit;text-decoration:none">← Radio</a> · Impulso FM</div>
   <h1>Podcast</h1>
   <p class="lead">Todos los programas completos, cuando quieras. Toca un capítulo para saltar directo a esa canción o a ese tema.</p>
   <div class="subs" id="subs">
     <h3>Llévatelo a tu app</h3>
     <p>Suscríbete y te llegan los programas nuevos solos. Descárgalos y escúchalos sin internet, con la app cerrada.</p>
     <div class="apps" id="apps"></div>
+    <a class="ig-cta" style="margin:0 0 14px" href="https://instagram.com/elrodrik.locutor/" target="_blank" rel="noopener noreferrer"><i class="ig-ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></i><span><b>Sígueme en Instagram</b><small>@elrodrik.locutor</small></span></a>
     <span class="spoti">¿Prefieres Spotify? <a href="https://open.spotify.com/show/6IsvrUUjdikxReJRv9Vgd2" target="_blank" rel="noopener">Síguenos también ahí</a></span>
   </div>
   <div class="tabs" id="tabs"></div>

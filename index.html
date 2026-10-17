@@ -83,6 +83,20 @@
   .pie p{margin:0;font-size:13.5px;color:var(--gris)}
   .pie a{color:var(--gris);text-decoration:none}
   .pie a:hover{color:var(--hueso)}
+
+  /* Instagram siempre a la mano */
+  .ig-cta{display:inline-flex;align-self:flex-start;align-items:center;gap:9px;margin:16px 0 4px;padding:7px 14px 7px 7px;border-radius:999px;
+    background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888);color:#fff;text-decoration:none;
+    box-shadow:0 8px 24px rgba(220,39,67,.35);transition:transform .15s}
+  .ig-cta:hover{transform:translateY(-2px)}
+  .ig-cta .ig-ico{width:29px;height:29px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;flex:none}
+  .ig-cta svg{width:16px;height:16px}
+  .ig-cta span{display:flex;flex-direction:column;line-height:1.15;text-align:left}
+  .ig-cta b{font-size:11.7px;font-weight:800}
+  .ig-cta small{font-size:9.5px;opacity:.92}
+  .ig-flota{position:fixed;right:16px;bottom:16px;z-index:60;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;color:#fff;
+    background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888);box-shadow:0 8px 24px rgba(0,0,0,.45)}
+  .ig-flota svg{width:28px;height:28px}
 </style>
 </head>
 <body>
@@ -91,7 +105,8 @@
   <p class="eyebrow">Cancún, Quintana Roo</p>
   <h1>Rodrigo<br>Madera</h1>
   <p class="lema">Locutor, videógrafo y productor. Todo lo que hago vive aquí, en un solo lugar.</p>
-  <p class="lugar">Al aire por Impulso FM 107.3</p>
+  <p class="lugar">Al aire por Impulso FM · 107.3 Chetumal · 107.5 Cancún · 106.1 Playa del Carmen</p>
+  <a class="ig-cta" href="https://instagram.com/elrodrik.locutor/" target="_blank" rel="noopener noreferrer"><i class="ig-ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></i><span><b>Sígueme en Instagram</b><small>@elrodrik.locutor</small></span></a>
 </header>
 
 <main class="wrap">
@@ -140,5 +155,6 @@ if (GOATCOUNTER && /^[a-z0-9-]+$/i.test(GOATCOUNTER)) {
   document.body.appendChild(gc);
 }
 </script>
+<a class="ig-flota" href="https://instagram.com/elrodrik.locutor/" target="_blank" rel="noopener noreferrer" aria-label="Sígueme en Instagram: @elrodrik.locutor"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
 </body>
 </html>
