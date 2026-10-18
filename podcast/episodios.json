@@ -290,5 +290,63 @@
   "temp": 1,
   "num": 2,
   "bytes": 136802263
+ },
+ {
+  "show": "Hypeando",
+  "ep": "Temp.1 Ep.3",
+  "dia": "Jueves",
+  "color": "ambar",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/hypeando/03.mp3",
+  "ch": [
+   [
+    0,
+    "Hypeando #3"
+   ]
+  ],
+  "fecha": "2026-10-15",
+  "dur": 3420,
+  "slug": "hypeando",
+  "temp": 1,
+  "num": 3,
+  "bytes": 136804466
+ },
+ {
+  "show": "Crónicas Migajeras",
+  "ep": "Temp.1 Ep.3",
+  "dia": "Viernes 8:00 pm",
+  "color": "rosa",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/cronicas-migajeras/03.mp3",
+  "ch": [
+   [
+    0,
+    "Crónicas Migajeras #3"
+   ]
+  ],
+  "fecha": "2026-10-16",
+  "dur": 3477,
+  "slug": "cronicas-migajeras",
+  "temp": 1,
+  "num": 3,
+  "bytes": 139081004
+ },
+ {
+  "show": "Sábado de Rush",
+  "ep": "Temp.1 Ep.3",
+  "dia": "Sábado 8:00 pm",
+  "color": "cian",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/sabado-de-rush/03.mp3",
+  "fecha": "2026-10-17",
+  "dur": 3534,
+  "disponible": "2026-10-17T21:00:00-05:00",
+  "ch": [
+   [
+    0,
+    "Sábado de Rush #3"
+   ]
+  ],
+  "slug": "sabado-de-rush",
+  "temp": 1,
+  "num": 3,
+  "bytes": 141381164
  }
 ]

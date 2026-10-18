@@ -14,6 +14,22 @@
   <itunes:block>Yes</itunes:block>
   <podcast:locked>yes</podcast:locked>
   <item>
+   <title>Hypeando Temp.1 Ep.3</title>
+   <link>https://rodrigomadera.com/podcast/hypeando/3/</link>
+   <guid isPermaLink="false">rodrigomadera-hypeando-1-3</guid>
+   <pubDate>Thu, 15 Oct 2026 21:00:00 -0500</pubDate>
+   <description>Transmitido el jueves 15 de octubre de 2026 por Impulso FM 107.3.
+
+0:00 Hypeando #3
+
+Escúchalo en https://rodrigomadera.com/podcast/hypeando/3/</description>
+   <enclosure url="https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/hypeando/03.mp3" length="136804466" type="audio/mpeg"/>
+   <itunes:duration>3420</itunes:duration>
+   <itunes:season>1</itunes:season><itunes:episode>3</itunes:episode>
+   <itunes:image href="https://rodrigomadera.com/podcast/img/hypeando.png"/>
+   <podcast:chapters url="https://rodrigomadera.com/podcast/hypeando/3/chapters.json" type="application/json+chapters"/>
+  </item>
+  <item>
    <title>Hypeando Temp.1 Ep.2</title>
    <link>https://rodrigomadera.com/podcast/hypeando/2/</link>
    <guid isPermaLink="false">rodrigomadera-hypeando-1-2</guid>
