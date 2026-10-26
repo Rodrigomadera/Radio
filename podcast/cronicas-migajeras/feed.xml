@@ -14,6 +14,22 @@
   <itunes:block>Yes</itunes:block>
   <podcast:locked>yes</podcast:locked>
   <item>
+   <title>Crónicas Migajeras Temp.1 Ep.4</title>
+   <link>https://rodrigomadera.com/podcast/cronicas-migajeras/4/</link>
+   <guid isPermaLink="false">rodrigomadera-cronicas-migajeras-1-4</guid>
+   <pubDate>Fri, 23 Oct 2026 21:00:00 -0500</pubDate>
+   <description>Transmitido el viernes 23 de octubre de 2026 por Impulso FM 107.3.
+
+0:00 Crónicas Migajeras #4
+
+Escúchalo en https://rodrigomadera.com/podcast/cronicas-migajeras/4/</description>
+   <enclosure url="https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/cronicas-migajeras/04.mp3" length="143954706" type="audio/mpeg"/>
+   <itunes:duration>3599</itunes:duration>
+   <itunes:season>1</itunes:season><itunes:episode>4</itunes:episode>
+   <itunes:image href="https://rodrigomadera.com/podcast/img/cronicas-migajeras.png"/>
+   <podcast:chapters url="https://rodrigomadera.com/podcast/cronicas-migajeras/4/chapters.json" type="application/json+chapters"/>
+  </item>
+  <item>
    <title>Crónicas Migajeras Temp.1 Ep.3</title>
    <link>https://rodrigomadera.com/podcast/cronicas-migajeras/3/</link>
    <guid isPermaLink="false">rodrigomadera-cronicas-migajeras-1-3</guid>
