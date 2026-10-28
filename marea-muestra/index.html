@@ -4,138 +4,13 @@
 <title>MÁREA Events Venue · Cancún</title>
 <meta name="description" content="MÁREA Events Venue: salón de eventos en Cancún con salón principal, lobby, jardín con palmeras y alberca.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#26231F;--mute:#8F877C;--ivory:#FBF9F5;--sand:#F3EEE6;--line:#E7E0D4;--gold:#A9844F}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Jost,sans-serif;font-weight:300;color:var(--ink);background:var(--ivory);line-height:1.7;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-img,video{display:block;width:100%}
-.eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:400}
-.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
-h2{font-family:'Cormorant Garamond';font-weight:300;font-size:clamp(36px,4.4vw,60px);line-height:1.06;margin:16px 0 24px}
-h2 i{color:var(--gold)}
-p.lead{color:#5b544b;max-width:500px}
-.btn{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:14px 30px;font-size:11px;letter-spacing:.26em;text-transform:uppercase;transition:.35s}
-.btn:hover,.btn.solid{background:var(--gold);color:#fff}
-.btn.solid:hover{background:var(--ink);border-color:var(--ink)}
-/* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:20;transition:.4s}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:88px}
-nav .logo{width:130px;height:44px;background:url(logo-blanco.png) center/contain no-repeat;transition:.4s}
-nav ul{display:flex;gap:34px;list-style:none;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:#fff}
-nav .btn{border-color:#fff;color:#fff}
-nav.solid{background:rgba(251,249,245,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav.solid .wrap{height:72px}
-nav.solid .logo{background-image:url(logo.png)}
-nav.solid ul{color:var(--ink)}
-nav.solid .btn{border-color:var(--gold);color:var(--gold)}
-nav ul a:hover{color:var(--gold)}
-/* hero */
-.hero{position:relative;height:100vh;min-height:620px;overflow:hidden;color:#fff}
-.hero video{position:absolute;inset:0;height:100%;object-fit:cover}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,15,.35) 0%,rgba(20,18,15,.05) 35%,rgba(20,18,15,.55) 100%)}
-.hero .copy{position:absolute;z-index:2;left:0;right:0;bottom:13%;text-align:center;padding:0 24px}
-.hero h1{font-family:'Cormorant Garamond';font-weight:300;font-size:clamp(44px,7vw,96px);line-height:1;letter-spacing:-.01em}
-.hero h1 i{display:block}
-.hero p{letter-spacing:.34em;text-transform:uppercase;font-size:12px;margin:24px 0 34px}
-.hero .btn{border-color:#fff;color:#fff}.hero .btn:hover{background:#fff;color:var(--ink)}
-.scroll{position:absolute;z-index:2;bottom:28px;left:50%;width:1px;height:46px;background:rgba(255,255,255,.5);overflow:hidden}
-.scroll:after{content:"";position:absolute;top:-46px;left:0;width:1px;height:46px;background:#fff;animation:sc 2.2s infinite}
-@keyframes sc{to{top:46px}}
-section{padding:130px 0}
-/* intro */
-.intro{display:grid;grid-template-columns:1.05fr 1fr;gap:90px;align-items:center}
-.intro .pics{position:relative;height:640px}
-.intro .pics img{position:absolute;object-fit:cover}
-.intro .p1{width:78%;height:78%;right:0;top:0}
-.intro .p2{width:46%;height:52%;left:0;bottom:0;border:10px solid var(--ivory)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:46px;border-top:1px solid var(--line)}
-.stats div{padding-top:22px}
-.stats b{display:block;font-family:'Cormorant Garamond';font-weight:300;font-size:46px;line-height:1}
-.stats span{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
-/* espacios: alternating */
-.esp{background:var(--sand)}
-.head{text-align:center;max-width:660px;margin:0 auto 80px}
-.head p{color:#5b544b}
-.row{display:grid;grid-template-columns:1.35fr 1fr;gap:70px;align-items:center;margin-bottom:110px}
-.row:last-child{margin-bottom:0}
-.row.rev{grid-template-columns:1fr 1.35fr}
-.row.rev .ph{order:2}
-.row .ph{overflow:hidden}
-.row .ph img{aspect-ratio:3/2;object-fit:cover;transition:transform 1.6s}
-.row:hover .ph img{transform:scale(1.03)}
-.row .n{font-family:'Cormorant Garamond';font-size:20px;color:var(--gold)}
-.row h3{font-family:'Cormorant Garamond';font-weight:300;font-size:clamp(32px,3.2vw,44px);line-height:1.1;margin:6px 0 16px}
-.row p{color:#5b544b;font-size:15px}
-.row ul{list-style:none;margin-top:20px;border-top:1px solid var(--line)}
-.row li{font-size:13px;letter-spacing:.06em;padding:10px 0;border-bottom:1px solid var(--line);color:#5b544b}
-/* video band */
-.band{position:relative;height:78vh;min-height:460px;padding:0;overflow:hidden}
-.band video{height:100%;object-fit:cover}
-.band:after{content:"";position:absolute;inset:0;background:rgba(20,18,15,.35)}
-.band .q{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:0 24px}
-.band .q p{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-size:clamp(30px,4.2vw,56px);line-height:1.12;max-width:920px}
-.band .q span{margin-top:22px;font-size:11px;letter-spacing:.32em;text-transform:uppercase}
-/* detalles */
-.det{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:end}
-.det figure{overflow:hidden}
-.det img{object-fit:cover}
-.det .a img{aspect-ratio:3/4}
-.det .b img{aspect-ratio:4/5}
-.det .c img{aspect-ratio:3/4}
-.det figcaption{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-top:12px}
-/* eventos */
-.ev{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.ev>div{padding:46px 28px;border-left:1px solid var(--line);text-align:center}
-.ev>div:first-child{border-left:none}
-.ev .ln{width:40px;height:1px;background:var(--gold);margin:0 auto}
-.ev h3{font-family:'Cormorant Garamond';font-weight:300;font-size:30px;margin:12px 0 8px}
-.ev p{font-size:14px;color:#6c655b}
-/* galeria */
-.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:240px;gap:12px}
-.gal img{height:100%;object-fit:cover;cursor:zoom-in;transition:opacity .3s}
-.gal img:hover{opacity:.88}
-.gal .w{grid-column:span 2}.gal .t{grid-row:span 2}
-.lb{position:fixed;inset:0;z-index:50;background:rgba(20,18,15,.94);display:none;align-items:center;justify-content:center;padding:4vw;cursor:zoom-out}
-.lb.on{display:flex}.lb img{max-width:100%;max-height:100%;width:auto;object-fit:contain}
-/* contacto */
-.contact{background:var(--sand)}
-.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
-.map{aspect-ratio:4/3;border:0;width:100%;filter:grayscale(.6) sepia(.15)}
-.info{margin-top:26px;font-size:14px;color:#5b544b}
-.info b{font-weight:400;color:var(--ink);display:block;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;margin-top:18px}
-form{display:grid;grid-template-columns:1fr 1fr;gap:20px 24px}
-form .full{grid-column:1/-1}
-label{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
-input,select,textarea{width:100%;background:transparent;border:none;border-bottom:1px solid #cfc6b8;padding:10px 0;font:inherit;font-size:15px;color:var(--ink);outline:none;border-radius:0}
-input:focus,select:focus,textarea:focus{border-color:var(--gold)}
-textarea{height:80px;resize:none}
-footer{padding:80px 0 44px;text-align:center}
-footer img{width:180px;margin:0 auto 28px}
-footer .soc{display:flex;gap:30px;justify-content:center;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-bottom:34px}
-footer small{font-size:11px;color:var(--mute);letter-spacing:.1em}
-.wa{position:fixed;right:24px;bottom:24px;z-index:30;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.18)}
-.wa svg{width:28px;fill:#fff}
-.rv{opacity:0;transform:translateY(28px);transition:opacity 1.1s ease,transform 1.1s ease}
-.rv.in{opacity:1;transform:none}
-@media(max-width:900px){
- nav ul{display:none}
- section{padding:84px 0}.wrap{padding:0 20px}
- .intro,.row,.row.rev,.cgrid{grid-template-columns:1fr;gap:40px}
- .row.rev .ph{order:0}
- .intro .pics{height:440px}
- .det{grid-template-columns:1fr 1fr}.det .c{display:none}
- .ev{grid-template-columns:1fr 1fr}.ev>div:nth-child(3){border-left:none}
- .gal{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
- form{grid-template-columns:1fr}
-}
-</style></head><body>
+<link rel="stylesheet" href="styles.css"></head><body>
 
 <nav id="nav"><div class="wrap">
-  <a href="#" class="logo" aria-label="MÁREA"></a>
-  <ul><li><a href="#salon">El venue</a></li><li><a href="#espacios">Espacios</a></li><li><a href="#eventos">Eventos</a></li><li><a href="#galeria">Galería</a></li><li><a href="#contacto">Contacto</a></li></ul>
-  <a class="btn" href="#contacto">Cotizar</a>
+  <a href="index.html" class="logo" aria-label="MÁREA"></a>
+  <ul><li><a href="index.html#salon">El venue</a></li><li><a href="index.html#espacios">Espacios</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="paquetes.html">Paquetes</a></li><li><a href="galeria.html">Galería</a></li><li><a href="contacto.html">Contacto</a></li></ul>
+  <a class="btn" href="contacto.html">Cotizar</a>
+  <button class="burger" aria-label="Menú"><span></span></button>
 </div></nav>
 
 <header class="hero">
@@ -144,7 +19,7 @@ footer small{font-size:11px;color:var(--mute);letter-spacing:.1em}
     <div class="eyebrow" style="color:#fff">Events Venue · Cancún</div>
     <h1 style="margin-top:20px">Donde cada celebración <i>encuentra su marea</i></h1>
     <p>Salón · Jardín · Alberca</p>
-    <a class="btn" href="#contacto">Agenda tu visita</a>
+    <a class="btn" href="contacto.html">Agenda tu visita</a>
   </div>
   <div class="scroll"></div>
 </header>
@@ -214,6 +89,7 @@ footer small{font-size:11px;color:var(--mute);letter-spacing:.1em}
     <div><div class="ln"></div><h3>Corporativos</h3><p>Cenas, lanzamientos y fiestas de fin de año.</p></div>
     <div><div class="ln"></div><h3>Sociales</h3><p>Cumpleaños, bautizos y celebraciones familiares.</p></div>
   </div>
+  <div style="text-align:center;margin-top:50px" class="rv"><a class="btn" href="paquetes.html">Ver paquetes</a></div>
 </div></section>
 
 <section id="galeria" style="padding-top:0"><div class="wrap">
@@ -227,32 +103,14 @@ footer small{font-size:11px;color:var(--mute);letter-spacing:.1em}
     <img src="img/lobby2.jpg" alt="">
     <img src="img/equipo.jpg" alt="">
   </div>
+  <div style="text-align:center;margin-top:50px" class="rv"><a class="btn" href="galeria.html">Ver galería completa</a></div>
 </div></section>
 
-<section class="contact" id="contacto"><div class="wrap cgrid">
-  <div class="rv">
-    <div class="eyebrow">Ubicación</div>
-    <h2>Visítanos <i>en Cancún</i></h2>
-    <iframe class="map" loading="lazy" src="https://www.google.com/maps?q=Canc%C3%BAn,+Quintana+Roo&output=embed"></iframe>
-    <div class="info">
-      <b>Dirección</b>Por confirmar · Cancún, Quintana Roo
-      <b>Visitas</b>Con cita previa
-      <b>Teléfono</b>+52 998 000 0000
-    </div>
-  </div>
-  <div class="rv">
-    <div class="eyebrow">Cotiza tu evento</div>
-    <h2>Cuéntanos <i>qué celebras</i></h2>
-    <form onsubmit="return false">
-      <div><label>Nombre</label><input></div>
-      <div><label>Teléfono</label><input type="tel"></div>
-      <div><label>Tipo de evento</label><select><option>Boda</option><option>XV años</option><option>Corporativo</option><option>Social</option><option>Otro</option></select></div>
-      <div><label>Fecha tentativa</label><input type="date"></div>
-      <div class="full"><label>Número de invitados</label><input inputmode="numeric"></div>
-      <div class="full"><label>Mensaje</label><textarea></textarea></div>
-      <div class="full"><button class="btn solid" style="cursor:pointer">Enviar solicitud</button></div>
-    </form>
-  </div>
+<section class="cta" id="contacto"><div class="wrap rv">
+  <div class="eyebrow">Cotiza tu evento</div>
+  <h2>Cuéntanos <i>qué celebras</i></h2>
+  <p class="lead" style="margin:0 auto 20px">Agenda una visita a MÁREA y recibe tu cotización personalizada.</p>
+  <div class="btns"><a class="btn solid" href="contacto.html">Solicitar cotización</a><a class="btn" href="paquetes.html">Ver paquetes</a></div>
 </div></section>
 
 <footer>
@@ -261,18 +119,9 @@ footer small{font-size:11px;color:var(--mute);letter-spacing:.1em}
   <small>© 2026 MÁREA Events Venue · Cancún · Diseño y fotografía: Buena Madera MKT Studio</small>
 </footer>
 
-<a class="wa" href="#contacto" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3z"/></svg></a>
+<a class="wa" href="contacto.html" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3z"/></svg></a>
 
-<div class="lb" id="lb"><img alt=""></div>
+<div class="lb" id="lb"><img alt=""><button class="ar pv" aria-label="Anterior">‹</button><button class="ar nx" aria-label="Siguiente">›</button></div>
 
-<script>
-const nav=document.getElementById('nav');
-const onScroll=()=>nav.classList.toggle('solid',scrollY>60);
-addEventListener('scroll',onScroll);onScroll();
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-const lb=document.getElementById('lb');
-document.querySelectorAll('.gal img').forEach(i=>i.onclick=()=>{lb.firstElementChild.src=i.src;lb.classList.add('on')});
-lb.onclick=()=>lb.classList.remove('on');
-</script>
+<script src="main.js"></script>
 </body></html>

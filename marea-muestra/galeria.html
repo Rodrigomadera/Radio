@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Galería · MÁREA Events Venue</title>
+<meta name="description" content="Fotografías de MÁREA Events Venue en Cancún: salón, lobby, jardín con palmeras y alberca.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head><body>
+
+<nav id="nav"><div class="wrap">
+  <a href="index.html" class="logo" aria-label="MÁREA"></a>
+  <ul><li><a href="index.html#salon">El venue</a></li><li><a href="index.html#espacios">Espacios</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="paquetes.html">Paquetes</a></li><li><a href="galeria.html" class=on>Galería</a></li><li><a href="contacto.html">Contacto</a></li></ul>
+  <a class="btn" href="contacto.html">Cotizar</a>
+  <button class="burger" aria-label="Menú"><span></span></button>
+</div></nav>
+
+<header class="phero" style="background-image:url(img/palmeras2.jpg)"><div class="wrap">
+  <div class="eyebrow" style="color:#fff">Galería</div>
+  <h1>Recorre <i>MÁREA</i></h1>
+</div></header>
+
+<section><div class="wrap">
+  <div class="head rv"><div class="eyebrow">Fotografía</div><h2>Cada espacio, <i>en detalle</i></h2></div>
+  <div class="filt rv"><button class="on" data-c="all">Todo</button><button data-c="salon">Interiores</button><button data-c="ext">Exteriores</button><button data-c="det">Detalles</button></div>
+  <div class="mas">
+    <img src="img/alberca.jpg" data-c="ext" alt="" loading="lazy">
+    <img src="img/palmeras.jpg" data-c="ext" alt="" loading="lazy">
+    <img src="img/escenario.jpg" data-c="salon" alt="" loading="lazy">
+    <img src="img/detalle-palma.jpg" data-c="det" alt="" loading="lazy">
+    <img src="img/lobby.jpg" data-c="salon" alt="" loading="lazy">
+    <img src="img/jardin.jpg" data-c="ext" alt="" loading="lazy">
+    <img src="img/salon-escalera.jpg" data-c="salon" alt="" loading="lazy">
+    <img src="img/detalle-arqui.jpg" data-c="det" alt="" loading="lazy">
+    <img src="img/palmeras2.jpg" data-c="ext" alt="" loading="lazy">
+    <img src="img/detalle-piedras.jpg" data-c="det" alt="" loading="lazy">
+    <img src="img/equipo.jpg" data-c="ext" alt="" loading="lazy">
+    <img src="img/salon.jpg" data-c="salon" alt="" loading="lazy">
+    <img src="img/cocina.jpg" data-c="salon" alt="" loading="lazy">
+  </div>
+  <p class="note">Muy pronto: galería de eventos montados.</p>
+</div></section>
+<script>
+document.querySelectorAll('.filt button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.filt button').forEach(x=>x.classList.toggle('on',x==b));
+  document.querySelectorAll('.mas img').forEach(i=>i.classList.toggle('off',b.dataset.c!='all'&&i.dataset.c!=b.dataset.c));
+});
+</script>
+
+<footer>
+  <img src="logo.png" alt="MÁREA Events Venue">
+  <div class="soc"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a><a href="#">WhatsApp</a></div>
+  <small>© 2026 MÁREA Events Venue · Cancún · Diseño y fotografía: Buena Madera MKT Studio</small>
+</footer>
+
+<a class="wa" href="contacto.html" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3z"/></svg></a>
+
+<div class="lb" id="lb"><img alt=""><button class="ar pv" aria-label="Anterior">‹</button><button class="ar nx" aria-label="Siguiente">›</button></div>
+
+<script src="main.js"></script>
+</body></html>

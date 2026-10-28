@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Contacto · MÁREA Events Venue</title>
+<meta name="description" content="Cotiza tu evento en MÁREA Events Venue, Cancún. Agenda tu visita.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head><body>
+
+<nav id="nav"><div class="wrap">
+  <a href="index.html" class="logo" aria-label="MÁREA"></a>
+  <ul><li><a href="index.html#salon">El venue</a></li><li><a href="index.html#espacios">Espacios</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="paquetes.html">Paquetes</a></li><li><a href="galeria.html">Galería</a></li><li><a href="contacto.html" class=on>Contacto</a></li></ul>
+  <a class="btn" href="contacto.html">Cotizar</a>
+  <button class="burger" aria-label="Menú"><span></span></button>
+</div></nav>
+
+<header class="phero" style="background-image:url(img/lobby2.jpg)"><div class="wrap">
+  <div class="eyebrow" style="color:#fff">Contacto</div>
+  <h1>Hablemos de <i>tu evento</i></h1>
+</div></header>
+
+<section class="contact"><div class="wrap cgrid">
+  <div class="rv">
+    <div class="eyebrow">Cotiza tu evento</div>
+    <h2>Cuéntanos <i>qué celebras</i></h2>
+    <form onsubmit="return false">
+      <div><label>Nombre</label><input></div>
+      <div><label>Teléfono</label><input type="tel"></div>
+      <div><label>Correo</label><input type="email"></div>
+      <div><label>Fecha tentativa</label><input type="date"></div>
+      <div><label>Tipo de evento</label><select><option>Boda</option><option>XV años</option><option>Graduación</option><option>Fiesta infantil</option><option>Bautizo / Primera comunión</option><option>Baby shower</option><option>Corporativo</option><option>Otro</option></select></div>
+      <div><label>Número de invitados</label><input inputmode="numeric"></div>
+      <div class="full"><label>Paquete de interés</label><select id="paq"><option>Aún no lo sé</option><option>Básico (bodas, XV, graduaciones)</option><option>Platino (bodas, XV, graduaciones)</option><option>Día (infantiles, bautizos, comunión, baby shower)</option><option>Básico (infantiles, bautizos, comunión, baby shower)</option><option>A la medida</option></select></div>
+      <div class="full"><label>Mensaje</label><textarea></textarea></div>
+      <div class="full"><button class="btn solid" style="cursor:pointer">Enviar solicitud</button></div>
+    </form>
+  </div>
+  <div class="rv">
+    <div class="eyebrow">Ubicación</div>
+    <h2>Visítanos <i>en Cancún</i></h2>
+    <iframe class="map" loading="lazy" src="https://www.google.com/maps?q=Canc%C3%BAn,+Quintana+Roo&output=embed"></iframe>
+    <div class="info">
+      <b>Dirección</b>Por confirmar · Cancún, Quintana Roo
+      <b>Visitas</b>Con cita previa
+      <b>Teléfono y WhatsApp</b>+52 998 000 0000
+      <b>Correo</b>Por confirmar
+    </div>
+  </div>
+</div></section>
+<script>
+const q=new URLSearchParams(location.search).get('paquete');
+if(q){const s=document.getElementById('paq');[...s.options].forEach(o=>{if(o.text==q)s.value=o.text})}
+</script>
+
+<footer>
+  <img src="logo.png" alt="MÁREA Events Venue">
+  <div class="soc"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a><a href="#">WhatsApp</a></div>
+  <small>© 2026 MÁREA Events Venue · Cancún · Diseño y fotografía: Buena Madera MKT Studio</small>
+</footer>
+
+<a class="wa" href="contacto.html" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3z"/></svg></a>
+
+
+<script src="main.js"></script>
+</body></html>
