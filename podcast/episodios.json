@@ -367,5 +367,24 @@
   "temp": 1,
   "num": 4,
   "bytes": 143954706
+ },
+ {
+  "show": "Crónicas Migajeras",
+  "ep": "Temp.1 Ep.5",
+  "dia": "Viernes 8:00 pm",
+  "color": "rosa",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/cronicas-migajeras/05.mp3",
+  "ch": [
+   [
+    0,
+    "Crónicas Migajeras #5"
+   ]
+  ],
+  "fecha": "2026-10-30",
+  "dur": 3544,
+  "slug": "cronicas-migajeras",
+  "temp": 1,
+  "num": 5,
+  "bytes": 141755139
  }
 ]
