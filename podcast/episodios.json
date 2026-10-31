@@ -1,5 +1,92 @@
 [
  {
+  "show": "Crónicas Migajeras",
+  "ep": "Temp.1 Ep.1",
+  "dia": "Viernes 8:00 pm",
+  "color": "rosa",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/cronicas-migajeras/01.mp3",
+  "ch": [
+   [
+    0,
+    "Apertura"
+   ],
+   [
+    61,
+    "Ela Taubert – ¿Cómo pasó?"
+   ],
+   [
+    235,
+    "Luis Miguel – Fría como el viento"
+   ],
+   [
+    455,
+    "Moderatto – Quemándome de amor"
+   ],
+   [
+    708,
+    "Joaquina – Desahogo"
+   ],
+   [
+    886,
+    "José José – Gavilán o paloma"
+   ],
+   [
+    1126,
+    "Alejandra Guzmán – Llama por favor"
+   ],
+   [
+    1431,
+    "Rocío Dúrcal – La gata bajo la lluvia"
+   ],
+   [
+    1646,
+    "Simone – Procuro olvidarte"
+   ],
+   [
+    1920,
+    "Cristian Castro – No podrás"
+   ],
+   [
+    2202,
+    "Yami Safdie & Camilo – Querida yo"
+   ],
+   [
+    2309,
+    "Pablo Ruiz – Aire"
+   ],
+   [
+    2591,
+    "PXNDX – Los malaventurados no lloran"
+   ],
+   [
+    2788,
+    "Juan Gabriel – Ya lo sé que tú te vas"
+   ],
+   [
+    3029,
+    "Laura Pausini – La soledad"
+   ],
+   [
+    3253,
+    "Julieta Venegas – Me voy"
+   ],
+   [
+    3429,
+    "Yuridia – Él lo tiene todo"
+   ],
+   [
+    3683,
+    "Natalia Lafourcade – Hasta la raíz"
+   ]
+  ],
+  "fecha": "2026-10-02",
+  "dur": 3966,
+  "slug": "cronicas-migajeras",
+  "temp": 1,
+  "num": 1,
+  "bytes": 158624062
+ },
+ {
   "show": "Hypeando",
   "ep": "Temp.1 Ep.1",
   "dia": "Jueves",
@@ -127,93 +214,6 @@
   "bytes": 139881470
  },
  {
-  "show": "Crónicas Migajeras",
-  "ep": "Temp.1 Ep.1",
-  "dia": "Viernes 8:00 pm",
-  "color": "rosa",
-  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/cronicas-migajeras/01.mp3",
-  "ch": [
-   [
-    0,
-    "Apertura"
-   ],
-   [
-    61,
-    "Ela Taubert – ¿Cómo pasó?"
-   ],
-   [
-    235,
-    "Luis Miguel – Fría como el viento"
-   ],
-   [
-    455,
-    "Moderatto – Quemándome de amor"
-   ],
-   [
-    708,
-    "Joaquina – Desahogo"
-   ],
-   [
-    886,
-    "José José – Gavilán o paloma"
-   ],
-   [
-    1126,
-    "Alejandra Guzmán – Llama por favor"
-   ],
-   [
-    1431,
-    "Rocío Dúrcal – La gata bajo la lluvia"
-   ],
-   [
-    1646,
-    "Simone – Procuro olvidarte"
-   ],
-   [
-    1920,
-    "Cristian Castro – No podrás"
-   ],
-   [
-    2202,
-    "Yami Safdie & Camilo – Querida yo"
-   ],
-   [
-    2309,
-    "Pablo Ruiz – Aire"
-   ],
-   [
-    2591,
-    "PXNDX – Los malaventurados no lloran"
-   ],
-   [
-    2788,
-    "Juan Gabriel – Ya lo sé que tú te vas"
-   ],
-   [
-    3029,
-    "Laura Pausini – La soledad"
-   ],
-   [
-    3253,
-    "Julieta Venegas – Me voy"
-   ],
-   [
-    3429,
-    "Yuridia – Él lo tiene todo"
-   ],
-   [
-    3683,
-    "Natalia Lafourcade – Hasta la raíz"
-   ]
-  ],
-  "fecha": "2026-10-02",
-  "dur": 3966,
-  "slug": "cronicas-migajeras",
-  "temp": 1,
-  "num": 1,
-  "bytes": 158624062
- },
- {
   "show": "Sábado de Rush",
   "ep": "Temp.1 Ep.1",
   "dia": "Sábado 8:00 pm",
@@ -234,25 +234,6 @@
   "bytes": 146675638
  },
  {
-  "show": "Hypeando",
-  "ep": "Temp.1 Ep.2",
-  "dia": "Jueves",
-  "color": "ambar",
-  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/hypeando/02.mp3",
-  "ch": [
-   [
-    0,
-    "Hypeando #2"
-   ]
-  ],
-  "fecha": "2026-10-08",
-  "dur": 3080,
-  "slug": "hypeando",
-  "temp": 1,
-  "num": 2,
-  "bytes": 123211275
- },
- {
   "show": "Crónicas Migajeras",
   "ep": "Temp.1 Ep.2",
   "dia": "Viernes 8:00 pm",
@@ -270,6 +251,25 @@
   "temp": 1,
   "num": 2,
   "bytes": 125599912
+ },
+ {
+  "show": "Hypeando",
+  "ep": "Temp.1 Ep.2",
+  "dia": "Jueves",
+  "color": "ambar",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/hypeando/02.mp3",
+  "ch": [
+   [
+    0,
+    "Hypeando #2"
+   ]
+  ],
+  "fecha": "2026-10-08",
+  "dur": 3080,
+  "slug": "hypeando",
+  "temp": 1,
+  "num": 2,
+  "bytes": 123211275
  },
  {
   "show": "Sábado de Rush",
