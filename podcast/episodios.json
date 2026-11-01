@@ -405,5 +405,24 @@
   "temp": 1,
   "num": 5,
   "bytes": 141755139
+ },
+ {
+  "show": "Sábado de Rush",
+  "ep": "Temp.1 Ep.5",
+  "dia": "Sábado 8:00 pm",
+  "color": "cian",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/sabado-de-rush/05.mp3",
+  "fecha": "2026-10-31",
+  "dur": 3596,
+  "ch": [
+   [
+    0,
+    "Sábado de Rush #5"
+   ]
+  ],
+  "slug": "sabado-de-rush",
+  "temp": 1,
+  "num": 5,
+  "bytes": 143834482
  }
 ]
