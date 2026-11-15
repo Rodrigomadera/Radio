@@ -14,6 +14,38 @@
   <itunes:block>Yes</itunes:block>
   <podcast:locked>yes</podcast:locked>
   <item>
+   <title>Crónicas Migajeras Temp.1 Ep.7</title>
+   <link>https://rodrigomadera.com/podcast/cronicas-migajeras/7/</link>
+   <guid isPermaLink="false">rodrigomadera-cronicas-migajeras-1-7</guid>
+   <pubDate>Fri, 13 Nov 2026 21:00:00 -0500</pubDate>
+   <description>Transmitido el viernes 13 de noviembre de 2026 por Impulso FM 107.3.
+
+0:00 Crónicas Migajeras #7
+
+Escúchalo en https://rodrigomadera.com/podcast/cronicas-migajeras/7/</description>
+   <enclosure url="https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/cronicas-migajeras/07.mp3" length="154827884" type="audio/mpeg"/>
+   <itunes:duration>3871</itunes:duration>
+   <itunes:season>1</itunes:season><itunes:episode>7</itunes:episode>
+   <itunes:image href="https://rodrigomadera.com/podcast/img/cronicas-migajeras.png"/>
+   <podcast:chapters url="https://rodrigomadera.com/podcast/cronicas-migajeras/7/chapters.json" type="application/json+chapters"/>
+  </item>
+  <item>
+   <title>Crónicas Migajeras Temp.1 Ep.5</title>
+   <link>https://rodrigomadera.com/podcast/cronicas-migajeras/5/</link>
+   <guid isPermaLink="false">rodrigomadera-cronicas-migajeras-1-5</guid>
+   <pubDate>Fri, 30 Oct 2026 21:00:00 -0500</pubDate>
+   <description>Transmitido el viernes 30 de octubre de 2026 por Impulso FM 107.3.
+
+0:00 Crónicas Migajeras #5
+
+Escúchalo en https://rodrigomadera.com/podcast/cronicas-migajeras/5/</description>
+   <enclosure url="https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/cronicas-migajeras/05.mp3" length="141755139" type="audio/mpeg"/>
+   <itunes:duration>3544</itunes:duration>
+   <itunes:season>1</itunes:season><itunes:episode>5</itunes:episode>
+   <itunes:image href="https://rodrigomadera.com/podcast/img/cronicas-migajeras.png"/>
+   <podcast:chapters url="https://rodrigomadera.com/podcast/cronicas-migajeras/5/chapters.json" type="application/json+chapters"/>
+  </item>
+  <item>
    <title>Crónicas Migajeras Temp.1 Ep.4</title>
    <link>https://rodrigomadera.com/podcast/cronicas-migajeras/4/</link>
    <guid isPermaLink="false">rodrigomadera-cronicas-migajeras-1-4</guid>

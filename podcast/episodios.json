@@ -424,5 +424,24 @@
   "temp": 1,
   "num": 5,
   "bytes": 143834482
+ },
+ {
+  "show": "Crónicas Migajeras",
+  "ep": "Temp.1 Ep.7",
+  "dia": "Viernes 8:00 pm",
+  "color": "rosa",
+  "src": "https://pub-99bac7119c7e4a51b0f139d511ae4a1e.r2.dev/cronicas-migajeras/07.mp3",
+  "ch": [
+   [
+    0,
+    "Crónicas Migajeras #7"
+   ]
+  ],
+  "fecha": "2026-11-13",
+  "dur": 3871,
+  "slug": "cronicas-migajeras",
+  "temp": 1,
+  "num": 7,
+  "bytes": 154827884
  }
 ]
