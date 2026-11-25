@@ -119,7 +119,7 @@ def main():
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="{e_(name)}" href="{SITE}/podcast/{e['slug']}/feed.xml">
 <script>location.replace("/podcast/?ep={e['slug']}-{e['num']}" + location.search.replace("?", "&") + location.hash);</script>
-</head><body style="background:#09090B;color:#F2EFE9;font-family:sans-serif;padding:40px">
+</head><body style="background:#09090B;color:#F2EFE9;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Inter','Helvetica Neue',Arial,sans-serif;padding:40px">
 <p><a style="color:#F2EFE9" href="/podcast/?ep={e['slug']}-{e['num']}">Escuchar {e_(title)}</a></p></body></html>
 ''', encoding='utf-8')
         (d / 'chapters.json').write_text(json.dumps(
