@@ -26,16 +26,16 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://rodrigomadera.com/#web", "url": "https://rodrigomadera.com/", "name": "Rodrigo Madera", "inLanguage": "es-MX", "publisher": {"@id": "https://rodrigomadera.com/#rodrigo"}}, {"@type": "Person", "@id": "https://rodrigomadera.com/#rodrigo", "name": "Rodrigo Madera", "url": "https://rodrigomadera.com/", "image": "https://rodrigomadera.com/og.jpg", "jobTitle": ["Locutor", "Agencia de marketing"], "description": "Rodrigo Madera, locutor en Cancún desde 2014. Conduce Hypeando, Crónicas Migajeras y Sábado de Rush en Impulso FM. Escucha los podcast, contacta.", "address": {"@type": "PostalAddress", "addressLocality": "Cancún", "addressRegion": "Quintana Roo", "addressCountry": "MX"}, "worksFor": {"@type": "RadioStation", "name": "Impulso FM 107.3"}, "sameAs": ["https://instagram.com/elrodrik.locutor/", "https://tiktok.com/@rodrigobuenamadera", "https://facebook.com/rodrigomadera1977", "https://x.com/RodrigoMadera_", "https://youtube.com/@romaaredam"]}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400..700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap">
+
 <style>
   :root{
     color-scheme: dark;
     --cabina:#09090B; --humo:#141418; --borde:#24242C;
     --hueso:#F2EFE9; --gris:#8A8A93; --gris-claro:#C6C3BE;
     --rojo:#E5342B; --ambar:#F5A623; --cian:#2FE3C8;
-    --display:'Familjen Grotesk','Helvetica Neue',Arial,sans-serif;
-    --texto:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+    --display:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Inter','Helvetica Neue',Arial,sans-serif;
+    --texto:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Inter','Helvetica Neue',Arial,sans-serif;
   }
   *{box-sizing:border-box}
   html,body{margin:0}
@@ -50,10 +50,10 @@
 
   /* ---------- portada ---------- */
   header{padding-block:clamp(56px,11vw,110px) clamp(40px,7vw,64px)}
-  h1{font-family:var(--display);font-weight:800;letter-spacing:-.01em;
+  h1{font-family:var(--display);font-weight:600;letter-spacing:-.022em;
      font-size:clamp(38px,8.5vw,80px);line-height:1.02;margin:16px 0 0;
      text-wrap:balance}
-  .lema{font-family:var(--display);font-weight:400;letter-spacing:-.01em;
+  .lema{font-family:var(--display);font-weight:400;letter-spacing:-.022em;
         font-size:clamp(15px,2vw,19px);color:var(--gris-claro);
         line-height:1.5;max-width:32ch;margin:24px 0 0}
   .lugar{font-size:14px;color:var(--gris);margin:14px 0 0}
@@ -67,7 +67,7 @@
   .area:hover{background:var(--humo)}
   .area .rotulo{font-size:11px;letter-spacing:.2em;text-transform:uppercase;
                 font-weight:700;color:var(--ac);margin:0 0 10px}
-  .area h2{font-family:var(--display);font-weight:700;letter-spacing:-.01em;
+  .area h2{font-family:var(--display);font-weight:600;letter-spacing:-.022em;
            font-size:clamp(24px,4.2vw,34px);line-height:1.1;margin:0}
   .area p{font-size:14.5px;color:var(--gris);line-height:1.55;margin:10px 0 0;max-width:46ch}
   .area .mini{width:128px;height:96px;object-fit:cover;border-radius:10px;
@@ -79,7 +79,7 @@
   }
   .area .hueco{width:128px;height:96px;border-radius:10px;border:1px dashed var(--borde);
                display:grid;place-items:center;color:var(--ac);
-               font-family:var(--display);font-weight:700;font-size:22px}
+               font-family:var(--display);font-weight:600;font-size:22px}
   @media (max-width:640px){.area .hueco{width:84px;height:84px;font-size:18px}}
 
   footer{padding-block:38px 52px}

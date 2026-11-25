@@ -8,16 +8,15 @@
 <meta property="og:url" content="https://rodrigomadera.com/podcast/"><meta property="og:title" content="Podcast · Rodrigo Madera">
 <meta property="og:description" content="Los programas completos de Impulso FM, cuando quieras.">
 <meta property="og:image" content="https://rodrigomadera.com/og.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400..700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap">
 <style>
 :root{--cabina:#09090B;--humo:#141418;--borde:#24242C;--hueso:#F2EFE9;--gris:#8A8A93;--gris-claro:#C6C3BE;
 --rosa:#FF3B6B;--cian:#2FE3C8;--ambar:#F5A623;--rojo:#E5342B;
---display:'Familjen Grotesk','Helvetica Neue',Arial,sans-serif;--texto:'Space Grotesk','Helvetica Neue',Arial,sans-serif}
-*{box-sizing:border-box;margin:0}
+--display:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Inter','Helvetica Neue',Arial,sans-serif;--texto:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Inter','Helvetica Neue',Arial,sans-serif;margin:0}
 body{background:var(--cabina);color:var(--hueso);font-family:var(--texto);padding:40px 16px 160px}
 .wrap{max-width:980px;margin:0 auto}
 .kicker{font-family:ui-monospace,Menlo,monospace;color:var(--ambar);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,7vw,72px);line-height:.95;margin:10px 0 8px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(36px,7vw,72px);line-height:.95;margin:10px 0 8px}
 .lead{color:var(--gris-claro);max-width:560px}
 .tabs{display:flex;gap:8px;margin:32px 0 16px;flex-wrap:wrap}
 .tab{background:none;border:1px solid var(--borde);color:var(--gris-claro);font:600 13px var(--texto);padding:9px 16px;border-radius:99px;cursor:pointer}
@@ -62,14 +61,14 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,7vw,72px);lin
 .sus{position:relative;overflow:hidden;border:1px solid var(--borde);border-radius:22px;padding:44px;background:radial-gradient(circle at 92% 0%,rgba(229,52,43,.22),transparent 45%),var(--humo)}
 .sus .eti{font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--gris-claro);display:flex;align-items:center;gap:10px;margin:0}
 .sus .eti i{width:9px;height:9px;border-radius:50%;background:var(--rojo,#E5342B);box-shadow:0 0 14px var(--rojo,#E5342B)}
-.sus h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,5vw,44px);letter-spacing:-.01em;line-height:1.05;margin:16px 0 0;max-width:620px}
+.sus h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,5vw,44px);letter-spacing:-.022em;line-height:1.05;margin:16px 0 0;max-width:620px}
 .sus .l{color:var(--gris-claro);font-size:17px;line-height:1.5;margin:14px 0 0;max-width:560px}
 .sus .pr{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
 .sus .pr span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--a);color:var(--a);border-radius:999px;padding:6px 12px}
 .sus form{display:flex;gap:10px;margin-top:26px;max-width:560px}
 .sus input{flex:1;min-width:0;font:inherit;font-size:16px;color:var(--hueso);background:var(--cabina);border:1px solid var(--borde);border-radius:12px;padding:15px 16px}
 .sus input::placeholder{color:var(--gris)}
-.sus button{font-family:var(--display);font-weight:700;font-size:15px;border:0;border-radius:12px;padding:0 22px;background:var(--hueso);color:var(--cabina);cursor:pointer;white-space:nowrap}
+.sus button{font-family:var(--display);font-weight:600;font-size:15px;border:0;border-radius:12px;padding:0 22px;background:var(--hueso);color:var(--cabina);cursor:pointer;white-space:nowrap}
 .sus .fino{font-size:13px;color:var(--gris);margin:12px 0 0}
 @media(max-width:600px){.sus{padding:28px 22px}.sus form{flex-direction:column}.sus button{padding:15px}}
 #suscribete{margin-top:40px}
